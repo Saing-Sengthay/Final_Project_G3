@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="km">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ISTAD - ស្ថាប័នបណ្តុះបណ្តាលកម្មវិធីកុំព្យូទ័រ</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+        body {
+            font-family: 'Roboto', sans-serif;
+        }
+        
+        .khmer-text {
+            font-family: 'Khmer OS', 'Roboto', sans-serif;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #4A90E2 0%, #357ABD 100%);
+        }
+        
+        .hero-section {
+            background: linear-gradient(rgba(74, 144, 226, 0.8), rgba(53, 122, 189, 0.8)), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%23f0f9ff" width="1200" height="600"/><circle fill="%23e0f2fe" cx="200" cy="150" r="100"/><circle fill="%23bae6fd" cx="800" cy="400" r="80"/></svg>');
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="bg-white shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <div class="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center">
+                        <i class="fas fa-graduation-cap text-white text-lg"></i>
+                    </div>
+                </div>
+
+                <!-- Navigation -->
+                <nav class="hidden md:flex space-x-8">
+                    <a href="#" class="text-gray-700 hover:text-blue-600 transition-colors font-medium">Home</a>
+                    <a href="#" class="text-gray-700 hover:text-blue-600 transition-colors font-medium">Event</a>
+                    <a href="#" class="text-gray-700 hover:text-blue-600 transition-colors font-medium">About</a>
+                </nav>
+
+                <!-- Right Side Icons and Button -->
+                <div class="flex items-center space-x-4">
+                    <!-- Heart/Favorite Icon -->
+                    <button id="favoriteBtn" class="p-2 text-gray-600 hover:text-red-500 transition-colors relative">
+                        <i class="fas fa-heart text-xl"></i>
+                        <span id="favoriteCount" class="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center hidden">0</span>
+                    </button>
+
+                    <!-- Account Icon -->
+                    <button class="p-2 text-gray-600 hover:text-blue-600 transition-colors">
+                        <i class="fas fa-user-circle text-xl"></i>
+                    </button>
+
+                    <!-- Post Button -->
+                    <button id="postEventBtn" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors flex items-center space-x-2">
+                        <i class="fas fa-plus"></i>
+                        <span>Post</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Post New Event Modal -->
+    <div id="postEventModal" class="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center hidden">
+        <div class="bg-white rounded-lg shadow-xl max-w-md w-full mx-4 max-h-[90vh] overflow-y-auto">
+            <div class="p-6">
+                <!-- Modal Header -->
+                <div class="flex justify-between items-center mb-6">
+                    <h2 class="text-xl font-bold text-gray-800">Post New Event</h2>
+                    <button id="closeModal" class="text-gray-500 hover:text-gray-700">
+                        <i class="fas fa-times text-xl"></i>
+                    </button>
+                </div>
+
+                <!-- Event Form -->
+                <form id="eventForm" class="space-y-4">
+                    <!-- Event Title -->
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Event Title</label>
+                        <input type="text" id="eventTitle" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500" placeholder="Enter event title">
+                    </div>
+
+                    <!-- Event Description -->
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Event Description</label>
+                        <textarea id="eventDescription" rows="3" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500" placeholder="Describe your event"></textarea>
+                    </div>
+
+                    <!-- Date and Time -->
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Date</label>
+                            <input type="date" id="eventDate" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Time</label>
+                            <input type="time" id="eventTime" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                        </div>
+                    </div>
+
+                    <!-- Location -->
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Location</label>
+                        <input type="text" id="eventLocation" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500" placeholder="Event location">
+                    </div>
+
+                    <!-- Category -->
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Category</label>
+                        <select id="eventCategory" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                            <option value="">Select category</option>
+                            <option value="sports">Sports</option>
+                            <option value="culture">Culture</option>
+                            <option value="technology">Technology</option>
+                            <option value="academic">Academic</option>
+                        </select>
+                    </div>
+
+                    <!-- Event Image Upload -->
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Event Image</label>
+                        <div class="border-2 border-dashed border-gray-300 rounded-lg p-4 text-center hover:border-blue-400 transition-colors">
+                            <input type="file" id="eventImage" accept="image/*" class="hidden">
+                            <label for="eventImage" class="cursor-pointer">
+                                <i class="fas fa-cloud-upload-alt text-3xl text-gray-400 mb-2"></i>
+                                <p class="text-sm text-gray-500">Click to upload image</p>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Registration Fee -->
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Registration Fee</label>
+                        <div class="relative">
+                            <span class="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500">$</span>
+                            <input type="number" id="eventFee" class="w-full pl-8 pr-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500" placeholder="0.00" min="0" step="0.01">
+                        </div>
+                    </div>
+
+                    <!-- Contact Information -->
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Contact Information</label>
+                        <input type="text" id="eventContact" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500" placeholder="Phone number or email">
+                    </div>
+
+                    <!-- Form Buttons -->
+                    <div class="flex space-x-3 pt-4">
+                        <button type="button" id="cancelBtn" class="flex-1 px-4 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors">
+                            Cancel
+                        </button>
+                        <button type="submit" class="flex-1 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
+                            Post Event
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero-section py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between mb-8">
+                <button class="text-white hover:text-blue-200 transition-colors">
+                    <i class="fas fa-chevron-left text-2xl"></i>
+                </button>
+
+                <div class="text-center">
+                    <div class="flex items-center justify-center mb-4">
+                        <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center mr-4">
+                            <i class="fas fa-graduation-cap text-blue-600 text-2xl"></i>
+                        </div>
+                        <h1 class="text-4xl font-bold text-white">ISTAD</h1>
+                    </div>
+                    <p class="text-blue-100 text-lg khmer-text">ស្ថាប័នបណ្តុះបណ្តាលកម្មវិធីកុំព្យូទ័រ</p>
+                </div>
+
+                <button class="text-white hover:text-blue-200 transition-colors">
+                    <i class="fas fa-chevron-right text-2xl"></i>
+                </button>
+            </div>
+
+            <!-- Group Photo -->
+            <div class="bg-white rounded-lg p-4 shadow-lg">
+                <div class="aspect-video bg-gradient-to-r from-green-400 to-blue-500 rounded-lg flex items-center justify-center relative overflow-hidden">
+                    <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black opacity-20"></div>
+                    <div class="text-center z-10">
+                        <i class="fas fa-users text-white text-6xl mb-4"></i>
+                        <p class="text-white text-lg font-semibold">ក្រុមសិស្សអនុបណ្ឌិត ISTAD</p>
+                        <p class="text-blue-100">រូបភាពជាក្រុម នៅលើទីលានកីឡា</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <!-- Upcoming Events -->
+        <section class="mb-12">
+            <div class="flex items-center justify-between mb-6">
+                <h2 class="text-2xl font-bold text-gray-800 khmer-text">ព្រឹត្តិការណ៍ដែលនឹងមកដល់</h2>
+                <div class="flex space-x-2">
+                    <button class="bg-blue-100 text-blue-600 px-4 py-2 rounded-lg hover:bg-blue-200 transition-colors">
+                        កីឡា
+                    </button>
+                    <button class="bg-gray-100 text-gray-600 px-4 py-2 rounded-lg hover:bg-gray-200 transition-colors">
+                        វប្បធម៌
+                    </button>
+                    <button class="bg-gray-100 text-gray-600 px-4 py-2 rounded-lg hover:bg-gray-200 transition-colors">
+                        បច្ចេកវិទ្យា
+                    </button>
+                </div>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-6">
+                <!-- Event Card 1 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden card-hover">
+                    <div class="aspect-video bg-green-500 flex items-center justify-center relative">
+                        <i class="fas fa-running text-white text-4xl"></i>
+                        <div class="absolute top-3 right-3 bg-white rounded-full p-2">
+                            <i class="fas fa-heart text-red-500"></i>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-semibold text-gray-800 mb-2 khmer-text">ការប្រកួតកីឡាបាល់ទាត់រវាងនិស្សិត</h3>
+                        <div class="flex items-center text-gray-500 text-sm mb-2">
+                            <i class="fas fa-calendar-alt mr-2"></i>
+                            <span>១៥ កុម្ភៈ ២០២៥</span>
+                        </div>
+                        <div class="flex items-center text-gray-500 text-sm">
+                            <i class="fas fa-map-marker-alt mr-2"></i>
+                            <span>ទីលានកីឡា ISTAD</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Event Card 2 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden card-hover">
+                    <div class="aspect-video bg-blue-500 flex items-center justify-center relative">
+                        <i class="fas fa-swimmer text-white text-4xl"></i>
+                        <div class="absolute top-3 right-3 bg-white rounded-full p-2">
+                            <i class="fas fa-heart text-red-500"></i>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-semibold text-gray-800 mb-2 khmer-text">ការប្រកួតហែលទឹក ក្នុងអាងហែលទឹក</h3>
+                        <div class="flex items-center text-gray-500 text-sm mb-2">
+                            <i class="fas fa-calendar-alt mr-2"></i>
+                            <span>២០ កុម្ភៈ ២០២៥</span>
+                        </div>
+                        <div class="flex items-center text-gray-500 text-sm">
+                            <i class="fas fa-map-marker-alt mr-2"></i>
+                            <span>អាងហែលទឹកជាតិ</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Event Card 3 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden card-hover">
+                    <div class="aspect-video bg-purple-500 flex items-center justify-center relative">
+                        <i class="fas fa-trophy text-white text-4xl"></i>
+                        <div class="absolute top-3 right-3 bg-white rounded-full p-2">
+                            <i class="fas fa-heart text-red-500"></i>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-semibold text-gray-800 mb-2 khmer-text">ពិធីប្រគល់រង្វាន់ នៅពេលបញ្ចប់ការប្រកួត</h3>
+                        <div class="flex items-center text-gray-500 text-sm mb-2">
+                            <i class="fas fa-calendar-alt mr-2"></i>
+                            <span>២៥ កុម្ភៈ ២០២៥</span>
+                        </div>
+                        <div class="flex items-center text-gray-500 text-sm">
+                            <i class="fas fa-map-marker-alt mr-2"></i>
+                            <span>សាលកម្មវិធី ISTAD</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Event Card 4 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden card-hover">
+                    <div class="aspect-video bg-indigo-600 flex items-center justify-center relative">
+                        <i class="fas fa-star text-white text-4xl"></i>
+                        <div class="absolute top-3 right-3 bg-white rounded-full p-2">
+                            <i class="fas fa-heart text-red-500"></i>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-semibold text-gray-800 mb-2 khmer-text">ពិធីបើកកីឡាជាប្រចាំឆ្នាំ របស់ ISTAD</h3>
+                        <div class="flex items-center text-gray-500 text-sm mb-2">
+                            <i class="fas fa-calendar-alt mr-2"></i>
+                            <span>១០ មីនា ២០២៥</span>
+                        </div>
+                        <div class="flex items-center text-gray-500 text-sm">
+                            <i class="fas fa-map-marker-alt mr-2"></i>
+                            <span>ពហុកីឡដ្ឋានជាតិ</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Event Card 5 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden card-hover">
+                    <div class="aspect-video bg-red-500 flex items-center justify-center relative">
+                        <i class="fas fa-table-tennis text-white text-4xl"></i>
+                        <div class="absolute top-3 right-3 bg-white rounded-full p-2">
+                            <i class="fas fa-heart text-red-500"></i>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-semibold text-gray-800 mb-2 khmer-text">ការប្រកួតកីឡាលុកពាន់ ក្នុងរបៀបពង់</h3>
+                        <div class="flex items-center text-gray-500 text-sm mb-2">
+                            <i class="fas fa-calendar-alt mr-2"></i>
+                            <span>០៥ មេសា ២០២៥</span>
+                        </div>
+                        <div class="flex items-center text-gray-500 text-sm">
+                            <i class="fas fa-map-marker-alt mr-2"></i>
+                            <span>សាលកីឡា ISTAD</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Event Card 6 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden card-hover">
+                    <div class="aspect-video bg-orange-500 flex items-center justify-center relative">
+                        <i class="fas fa-medal text-white text-4xl"></i>
+                        <div class="absolute top-3 right-3 bg-white rounded-full p-2">
+                            <i class="fas fa-heart text-red-500"></i>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-semibold text-gray-800 mb-2 khmer-text">ជម្រើសនិស្សិតល្អឥតខ្ចោះ កម្មវិធីកីឡា</h3>
+                        <div class="flex items-center text-gray-500 text-sm mb-2">
+                            <i class="fas fa-calendar-alt mr-2"></i>
+                            <span>១០ មេសា ២០២៥</span>
+                        </div>
+                        <div class="flex items-center text-gray-500 text-sm">
+                            <i class="fas fa-map-marker-alt mr-2"></i>
+                            <span>សាលាធំ ISTAD</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Other Events -->
+        <section class="mb-12">
+            <h2 class="text-2xl font-bold text-gray-800 mb-6 khmer-text">ព្រឹត្តិការណ៍ផ្សេងទៀត</h2>
+
+            <div class="grid md:grid-cols-3 gap-6">
+                <!-- Other Event Card 1 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden card-hover">
+                    <div class="aspect-video bg-cyan-500 flex items-center justify-center">
+                        <i class="fas fa-swimmer text-white text-4xl"></i>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-semibold text-gray-800 mb-2 khmer-text">ការហ្វឹកហាត់ហែលទឹកសម្រាប់បុរសនិងស្រ្តី</h3>
+                        <div class="flex items-center text-gray-500 text-sm">
+                            <i class="fas fa-calendar-alt mr-2"></i>
+                            <span>រៀងរាល់ថ្ងៃសៅរ៍</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Other Event Card 2 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden card-hover">
+                    <div class="aspect-video bg-yellow-500 flex items-center justify-center">
+                        <i class="fas fa-dumbbell text-white text-4xl"></i>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-semibold text-gray-800 mb-2 khmer-text">ការហ្វឹកហាត់កាយសម្ពាធ នៅក្នុងកន្លែងហ្វឹកហាត់</h3>
+                        <div class="flex items-center text-gray-500 text-sm">
+                            <i class="fas fa-calendar-alt mr-2"></i>
+                            <span>រៀងរាល់ថ្ងៃអង្គារ</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Other Event Card 3 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden card-hover">
+                    <div class="aspect-video bg-pink-500 flex items-center justify-center">
+                        <i class="fas fa-music text-white text-4xl"></i>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-semibold text-gray-800 mb-2 khmer-text">ការប្រគំតន្ត្រី និងរបាំប្រពៃណី ខ្មែរ</h3>
+                        <div class="flex items-center text-gray-500 text-sm">
+                            <i class="fas fa-calendar-alt mr-2"></i>
+                            <span>១៥ ឧសភា ២០២៥</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Other Event Card 4 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden card-hover">
+                    <div class="aspect-video bg-green-600 flex items-center justify-center">
+                        <i class="fas fa-futbol text-white text-4xl"></i>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-semibold text-gray-800 mb-2 khmer-text">ការប្រកួតបាល់ទាត់រវាងសាកលវិទ្យាល័យ</h3>
+                        <div class="flex items-center text-gray-500 text-sm">
+                            <i class="fas fa-calendar-alt mr-2"></i>
+                            <span>២០ ឧសភា ២០២៥</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Other Event Card 5 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden card-hover">
+                    <div class="aspect-video bg-purple-600 flex items-center justify-center">
+                        <i class="fas fa-basketball-ball text-white text-4xl"></i>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-semibold text-gray-800 mb-2 khmer-text">ការប្រកួតកីឡាបាល់បោះ ជំនាន់ថ្មី</h3>
+                        <div class="flex items-center text-gray-500 text-sm">
+                            <i class="fas fa-calendar-alt mr-2"></i>
+                            <span>២៥ ឧសភា ២០២៥</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Other Event Card 6 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden card-hover">
+                    <div class="aspect-video bg-teal-600 flex items-center justify-center">
+                        <i class="fas fa-volleyball-ball text-white text-4xl"></i>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-semibold text-gray-800 mb-2 khmer-text">ការប្រកួតកីឡាបាល់ឆែវ រវាងកម្រិតថ្នាក់</h3>
+                        <div class="flex items-center text-gray-500 text-sm">
+                            <i class="fas fa-calendar-alt mr-2"></i>
+                            <span>៣០ ឧសភា ២០២៥</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Load More Button -->
+        <div class="text-center mb-12">
+            <button class="bg-blue-600 text-white px-8 py-3 rounded-lg hover:bg-blue-700 transition-colors">
+                <i class="fas fa-plus mr-2"></i>
+                មើលបន្ថែម
+            </button>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-lg font-semibold mb-4 khmer-text">បង្កើតដោយ</h3>
+                    <div class="flex items-center space-x-3 mb-4">
+                        <div class="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center">
+                            <i class="fas fa-graduation-cap text-white"></i>
+                        </div>
+                        <span class="font-semibold">ISTAD</span>
+                    </div>
+                    <p class="text-gray-400 text-sm khmer-text">ស្ថាប័នបណ្តុះបណ្តាលកម្មវិធីកុំព្យូទ័រ</p>
+                </div>
+
+                <div>
+                    <h3 class="text-lg font-semibold mb-4 khmer-text">រៀបចំដោយ</h3>
+                    <div class="flex items-center space-x-3 mb-4">
+                        <div class="w-10 h-10 bg-green-600 rounded-full flex items-center justify-center">
+                            <i class="fas fa-code text-white"></i>
+                        </div>
+                        <span class="font-semibold">កម្មវិធីសិក្សា</span>
+                    </div>
+                    <p class="text-gray-400 text-sm">បច្ចេកវិទ្យាព័ត៌មាន</p>
+                </div>
+
+                <div>
+                    <h3 class="text-lg font-semibold mb-4 khmer-text">ប្រភេទ</h3>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-white transition-colors">កីឡា</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">វប្បធម៌</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">បច្ចេកវិទ្យា</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">ការប្រកួត</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="text-lg font-semibold mb-4 khmer-text">តំណភ្ជាប់រហ័ស</h3>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-white transition-colors">ទំព័រដើម</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">ព័ត៌មាន</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">ទំនាក់ទំនង</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">ជំនួយ</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-700 mt-8 pt-8 flex justify-between items-center">
+                <p class="text-gray-400 text-sm">© ២០២៥ ISTAD. រក្សាសិទ្ធិគ្រប់យ៉ាង។</p>
+                <div class="flex space-x-4">
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Add some interactive functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            let favoriteEvents = [];
+            let showOnlyFavorites = false;
+
+            // Modal functionality
+            const postEventBtn = document.getElementById('postEventBtn');
+            const postEventModal = document.getElementById('postEventModal');
+            const closeModal = document.getElementById('closeModal');
+            const cancelBtn = document.getElementById('cancelBtn');
+            const eventForm = document.getElementById('eventForm');
+
+            // Open modal
+            postEventBtn.addEventListener('click', function() {
+                postEventModal.classList.remove('hidden');
+                document.body.style.overflow = 'hidden';
+            });
+
+            // Close modal functions
+            function closeModalFunc() {
+                postEventModal.classList.add('hidden');
+                document.body.style.overflow = 'auto';
+                eventForm.reset();
+            }
+
+            closeModal.addEventListener('click', closeModalFunc);
+            cancelBtn.addEventListener('click', closeModalFunc);
+
+            // Close modal when clicking outside
+            postEventModal.addEventListener('click', function(e) {
+                if (e.target === postEventModal) {
+                    closeModalFunc();
+                }
+            });
+
+            // Handle form submission
+            eventForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+
+                // Get form data
+                const formData = {
+                    title: document.getElementById('eventTitle').value,
+                    description: document.getElementById('eventDescription').value,
+                    date: document.getElementById('eventDate').value,
+                    time: document.getElementById('eventTime').value,
+                    location: document.getElementById('eventLocation').value,
+                    category: document.getElementById('eventCategory').value,
+                    fee: document.getElementById('eventFee').value,
+                    contact: document.getElementById('eventContact').value
+                };
+
+                // Validate required fields
+                if (!formData.title || !formData.date || !formData.location) {
+                    alert('Please fill in all required fields');
+                    return;
+                }
+
+                // Here you would typically send the data to your backend
+                console.log('New event data:', formData);
+                alert('Event posted successfully!');
+                closeModalFunc();
+            });
+
+            // Favorite functionality
+            const favoriteBtn = document.getElementById('favoriteBtn');
+            const favoriteCount = document.getElementById('favoriteCount');
+
+            favoriteBtn.addEventListener('click', function() {
+                showOnlyFavorites = !showOnlyFavorites;
+
+                if (showOnlyFavorites) {
+                    favoriteBtn.classList.add('text-red-500');
+                    favoriteBtn.classList.remove('text-gray-600');
+                    showFavoriteEvents();
+                } else {
+                    favoriteBtn.classList.remove('text-red-500');
+                    favoriteBtn.classList.add('text-gray-600');
+                    showAllEvents();
+                }
+            });
+
+            function updateFavoriteCount() {
+                const count = favoriteEvents.length;
+                if (count > 0) {
+                    favoriteCount.textContent = count;
+                    favoriteCount.classList.remove('hidden');
+                } else {
+                    favoriteCount.classList.add('hidden');
+                }
+            }
+
+            function showFavoriteEvents() {
+                const eventCards = document.querySelectorAll('.card-hover');
+                eventCards.forEach((card, index) => {
+                    if (favoriteEvents.includes(index)) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            }
+
+            function showAllEvents() {
+                const eventCards = document.querySelectorAll('.card-hover');
+                eventCards.forEach(card => {
+                    card.style.display = 'block';
+                });
+            }
+
+            // Add click handlers for category buttons
+            const categoryButtons = document.querySelectorAll('button[class*="bg-blue-100"], button[class*="bg-gray-100"]');
+            categoryButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Remove active class from all buttons
+                    categoryButtons.forEach(btn => {
+                        btn.classList.remove('bg-blue-100', 'text-blue-600');
+                        btn.classList.add('bg-gray-100', 'text-gray-600');
+                    });
+
+                    // Add active class to clicked button
+                    this.classList.remove('bg-gray-100', 'text-gray-600');
+                    this.classList.add('bg-blue-100', 'text-blue-600');
+                });
+            });
+
+            // Add heart toggle functionality for individual event cards
+            const heartButtons = document.querySelectorAll('.fa-heart');
+            heartButtons.forEach((heart, index) => {
+                // Skip the main favorite button
+                if (heart.closest('#favoriteBtn')) return;
+
+                heart.addEventListener('click', function(e) {
+                    e.stopPropagation();
+
+                    const eventCard = this.closest('.card-hover');
+                    const eventIndex = Array.from(document.querySelectorAll('.card-hover')).indexOf(eventCard);
+
+                    if (favoriteEvents.includes(eventIndex)) {
+                        // Remove from favorites
+                        favoriteEvents = favoriteEvents.filter(id => id !== eventIndex);
+                        this.classList.remove('text-red-500');
+                        this.classList.add('text-gray-300');
+                    } else {
+                        // Add to favorites
+                        favoriteEvents.push(eventIndex);
+                        this.classList.add('text-red-500');
+                        this.classList.remove('text-gray-300');
+                    }
+
+                    updateFavoriteCount();
+                });
+            });
+
+            // Initialize heart buttons as not favorited
+            heartButtons.forEach(heart => {
+                if (!heart.closest('#favoriteBtn')) {
+                    heart.classList.add('text-gray-300');
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

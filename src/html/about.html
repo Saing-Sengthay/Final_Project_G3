@@ -4,307 +4,491 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Business Solutions</title>
+    <title>SportHub</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        .hero-pattern {
-            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#1e40af',
+                        secondary: '#f59e0b',
+                        accent: '#10b981',
+                        purple: '#8b5cf6',
+                        pink: '#ec4899',
+                        orange: '#f97316',
+                        yellow: '#eab308'
+                    }
+                }
+            }
         }
-    </style>
+    </script>
 </head>
 
-<body class="bg-gray-50">
-    <!-- Header -->
-    <header class="bg-white shadow-sm">
-        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center py-4">
-                <div class="flex items-center">
-                    <div class="w-10 h-10 bg-yellow-400 rounded-lg flex items-center justify-center">
-                        <span class="text-white font-bold text-xl">B</span>
+<body class="bg-white">
+
+
+    <!-- Hero Section with Olympic Rings -->
+    <section class="relative bg-gradient-to-b from-sky-200 to-sky-100 overflow-hidden">
+        <!-- Colorful silhouette background -->
+        <div class="absolute bottom-0 left-0 right-0 h-32">
+            <svg viewBox="0 0 1200 200" class="w-full h-full">
+                <!-- Colorful building silhouettes -->
+                <path d="M0,200 L0,100 L50,80 L100,90 L150,70 L200,85 L250,60 L300,75 L350,55 L400,70 L450,50 L500,65 L550,45 L600,60 L650,40 L700,55 L750,35 L800,50 L850,30 L900,45 L950,25 L1000,40 L1050,20 L1100,35 L1150,15 L1200,30 L1200,200 Z" 
+                      fill="url(#cityGradient)"/>
+                <defs>
+                    <linearGradient id="cityGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" style="stop-color:#f97316"/>
+                        <stop offset="25%" style="stop-color:#eab308"/>
+                        <stop offset="50%" style="stop-color:#22c55e"/>
+                        <stop offset="75%" style="stop-color:#3b82f6"/>
+                        <stop offset="100%" style="stop-color:#8b5cf6"/>
+                    </linearGradient>
+                </defs>
+            </svg>
+        </div>
+
+        <div class="container mx-auto px-4 py-16 relative z-10">
+            <div class="text-center">
+                <!-- SportHub Logo -->
+                <div class="flex justify-center mb-8">
+                    <div class="bg-gradient-to-r from-blue-500 via-green-500 to-orange-500 rounded-full p-4">
+                        <div class="text-white text-4xl font-bold">SPORT HUB</div>
                     </div>
-                    <span class="ml-3 text-xl font-semibold text-gray-900">ដំណោះស្រាយអាជីវកម្ម</span>
                 </div>
-                <div class="hidden md:flex space-x-8">
-                    <a href="#" class="text-gray-700 hover:text-yellow-600">Home</a>
-                    <a href="#" class="text-gray-700 hover:text-yellow-600">About</a>
-                    <a href="#" class="text-gray-700 hover:text-yellow-600">Services</a>
-                    <a href="#" class="text-gray-700 hover:text-yellow-600">Team</a>
-                    <a href="#" class="text-gray-700 hover:text-yellow-600">Contact</a>
+
+                <!-- Khmer text -->
+                <h1 class="text-2xl font-bold text-gray-800 mb-4">ការណែនាំអំពីកីឡានៅក្នុងប្រទេស SPORT</h1>
+                <p class="text-gray-600 max-w-4xl mx-auto mb-8 leading-relaxed">
+                    កីឡាជាផ្នែកមួយសំខាន់នៃជីវិតរបស់យើង។ វាជួយបង្កើនសុខភាពរាងកាយ និងផ្នែកចិត្ត។ នៅក្នុងប្រទេសកម្ពុជា យើងមានកីឡាជាច្រើនប្រភេទដែលមានប្រជាប្រិយភាព ដូចជា កីឡាបាល់ទាត់ បាល់បោះ ហែលទឹក និងកីឡាប្រពៃណី។
+                </p>
+
+                <!-- Olympic Rings -->
+                <div class="flex justify-center mb-8">
+                    <svg width="200" height="100" viewBox="0 0 200 100">
+                        <!-- Blue ring -->
+                        <circle cx="40" cy="40" r="18" fill="none" stroke="#0066cc" stroke-width="4"/>
+                        <!-- Yellow ring -->
+                        <circle cx="80" cy="40" r="18" fill="none" stroke="#ffcc00" stroke-width="4"/>
+                        <!-- Black ring -->
+                        <circle cx="120" cy="40" r="18" fill="none" stroke="#000000" stroke-width="4"/>
+                        <!-- Green ring -->
+                        <circle cx="160" cy="40" r="18" fill="none" stroke="#009900" stroke-width="4"/>
+                        <!-- Red ring -->
+                        <circle cx="100" cy="60" r="18" fill="none" stroke="#cc0000" stroke-width="4"/>
+                    </svg>
                 </div>
             </div>
-        </nav>
-    </header>
+        </div>
+    </section>
 
-    <!-- Hero Section -->
-    <section class="relative bg-gradient-to-br from-yellow-400 via-orange-400 to-red-400 hero-pattern">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-            <div class="text-center">
-                <div class="mb-8">
-                    <div class="w-20 h-20 bg-white bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-6">
-                        <svg class="w-10 h-10 text-white" fill="currentColor" viewBox="0 0 20 20">
+    <!-- Stadium Section -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <div class="bg-gray-900 rounded-2xl overflow-hidden shadow-2xl">
+                        <div class="h-64 bg-gradient-to-b from-gray-700 to-gray-900 relative">
+                            <!-- Stadium illustration -->
+                            <div class="absolute inset-0 flex items-center justify-center">
+                                <div class="w-48 h-24 border-4 border-green-400 rounded-full relative overflow-hidden">
+                                    <div class="absolute inset-2 bg-green-500 rounded-full"></div>
+                                    <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-16 h-16 border-2 border-white rounded-full"></div>
+                                </div>
+                            </div>
+                            <!-- Stadium lights -->
+                            <div class="absolute top-4 left-8 w-2 h-2 bg-yellow-300 rounded-full animate-pulse"></div>
+                            <div class="absolute top-4 right-8 w-2 h-2 bg-yellow-300 rounded-full animate-pulse"></div>
+                            <div class="absolute top-8 left-16 w-2 h-2 bg-yellow-300 rounded-full animate-pulse"></div>
+                            <div class="absolute top-8 right-16 w-2 h-2 bg-yellow-300 rounded-full animate-pulse"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <h2 class="text-2xl font-bold text-gray-800 mb-6">អត្ថប្រយោជន៍របស់កីឡា</h2>
+                    <ul class="space-y-4">
+                        <li class="flex items-start space-x-3">
+                            <div class="w-2 h-2 bg-blue-500 rounded-full mt-2"></div>
+                            <span class="text-gray-600">កីឡាជួយបង្កើនកម្លាំងរាងកាយ និងភាពបត់បែនរបស់សាច់ដុំ</span>
+                        </li>
+                        <li class="flex items-start space-x-3">
+                            <div class="w-2 h-2 bg-green-500 rounded-full mt-2"></div>
+                            <span class="text-gray-600">ជួយកាត់បន្ថយស្ត្រេស និងបង្កើនអារម្មណ៍ល្អ</span>
+                        </li>
+                        <li class="flex items-start space-x-3">
+                            <div class="w-2 h-2 bg-orange-500 rounded-full mt-2"></div>
+                            <span class="text-gray-600">បង្កើនការទំនាក់ទំនងសង្គម និងការធ្វើការជាក្រុម</span>
+                        </li>
+                        <li class="flex items-start space-x-3">
+                            <div class="w-2 h-2 bg-purple-500 rounded-full mt-2"></div>
+                            <span class="text-gray-600">ជួយក្នុងការអភិវឌ្ឍន៍វិន័យ និងការរៀនសូត្រ</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Service 1 -->
+                <div class="bg-white rounded-xl p-6 shadow-lg text-center">
+                    <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8 text-purple-600" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-800 mb-2">កម្មវិធីហ្វឹកហាត់</h3>
+                    <p class="text-gray-600 text-sm">កម្មវិធីហ្វឹកហាត់ជាមួយគ្រូបង្វឹកមានបទពិសោធន៍ ដើម្បីអភិវឌ្ឍន៍ជំនាញកីឡារបស់អ្នក</p>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="bg-white rounded-xl p-6 shadow-lg text-center">
+                    <div class="w-16 h-16 bg-pink-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8 text-pink-600" fill="currentColor" viewBox="0 0 20 20">
                             <path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3z"/>
                         </svg>
                     </div>
+                    <h3 class="text-lg font-semibold text-gray-800 mb-2">ការប្រកួតប្រជែង</h3>
+                    <p class="text-gray-600 text-sm">ការរៀបចំការប្រកួតប្រជែងកីឡាជាប្រចាំ ដើម្បីលើកកម្ពស់ការចូលរួម</p>
                 </div>
-                <h1 class="text-4xl md:text-6xl font-bold text-white mb-6">
-                    ជោគជ័យរបស់អ្នកគឺជាបេសកកម្មរបស់យើង
-                </h1>
-                <p class="text-xl text-white text-opacity-90 mb-8 max-w-3xl mx-auto">
-                    យើងផ្តល់ជូនដំណោះស្រាយអាជីវកម្មពេញលេញ និងសេវាកម្មប្រឹក្សាយោបល់ ដើម្បីជួយក្រុមហ៊ុនរបស់អ្នកឈានដល់កម្ពស់ថ្មីនៃភាពជោគជ័យ និងកំណើន។
-                </p>
-                <button class="bg-white text-orange-500 px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition duration-300">
-                    ចាប់ផ្តើមថ្ងៃនេះ
-                </button>
-            </div>
 
-            <!-- Silhouettes -->
-            <div class="absolute bottom-0 left-0 right-0">
-                <div class="flex justify-between items-end max-w-7xl mx-auto px-4">
-                    <div class="hidden lg:block">
-                        <div class="w-16 h-24 bg-black bg-opacity-30 rounded-t-full"></div>
+                <!-- Service 3 -->
+                <div class="bg-white rounded-xl p-6 shadow-lg text-center">
+                    <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 10a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zM14 9a1 1 0 00-1 1v6a1 1 0 001 1h2a1 1 0 001-1v-6a1 1 0 00-1-1h-2z"/>
+                        </svg>
                     </div>
-                    <div class="hidden md:block">
-                        <div class="w-12 h-20 bg-black bg-opacity-30 rounded-t-full"></div>
+                    <h3 class="text-lg font-semibold text-gray-800 mb-2">បរិក្ខារកីឡា</h3>
+                    <p class="text-gray-600 text-sm">ផ្គត់ផ្គង់បរិក្ខារកីឡាគុណភាពខ្ពស់ សម្រាប់ការអនុវត្តន៍ និងការប្រកួត</p>
+                </div>
+
+                <!-- Service 4 -->
+                <div class="bg-white rounded-xl p-6 shadow-lg text-center">
+                    <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"/>
+                        </svg>
                     </div>
-                    <div class="hidden sm:block">
-                        <div class="w-14 h-22 bg-black bg-opacity-30 rounded-t-full"></div>
-                    </div>
-                    <div class="w-10 h-16 bg-black bg-opacity-30 rounded-t-full"></div>
-                    <div class="w-12 h-18 bg-black bg-opacity-30 rounded-t-full"></div>
-                    <div class="hidden sm:block">
-                        <div class="w-8 h-14 bg-black bg-opacity-30 rounded-t-full"></div>
-                    </div>
-                    <div class="hidden md:block">
-                        <div class="w-10 h-16 bg-black bg-opacity-30 rounded-t-full"></div>
-                    </div>
-                    <div class="hidden lg:block">
-                        <div class="w-14 h-20 bg-black bg-opacity-30 rounded-t-full"></div>
-                    </div>
+                    <h3 class="text-lg font-semibold text-gray-800 mb-2">កាលវិភាគ</h3>
+                    <p class="text-gray-600 text-sm">កាលវិភាគហ្វឹកហាត់ និងការប្រកួតប្រជែងត្រូវបានរៀបចំយ៉ាងល្អិតល្អន់</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Strategy Section -->
+    <!-- Our Members Section -->
     <section class="py-16 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid lg:grid-cols-2 gap-12 items-center">
-                <div>
-                    <h2 class="text-3xl font-bold text-gray-900 mb-6">
-                        យុទ្ធសាស្រ្តកំណើនអាជីវកម្ម
-                    </h2>
-                    <p class="text-gray-600 mb-6 leading-relaxed">
-                        វិធីសាស្រ្តដ៏ទូលំទូលាយរបស់យើងចំពោះការអភិវឌ្ឍន៍អាជីវកម្ម ផ្តោតលើយុទ្ធសាស្រ្តកំណើនប្រកបដោយចីរភាព ដែលផ្តល់លទ្ធផលដែលអាចវាស់វែងបាន។ យើងធ្វើការយ៉ាងជិតស្និទ្ធជាមួយក្រុមការងាររបស់អ្នក ដើម្បីកំណត់ឱកាស និងអនុវត្តដំណោះស្រាយ។
-                    </p>
-                    <ul class="space-y-3">
-                        <li class="flex items-center">
-                            <div class="w-2 h-2 bg-pink-500 rounded-full mr-3"></div>
-                            <span class="text-gray-700">ការវិភាគ និងស្រាវជ្រាវទីផ្សារ</span>
-                        </li>
-                        <li class="flex items-center">
-                            <div class="w-2 h-2 bg-blue-500 rounded-full mr-3"></div>
-                            <span class="text-gray-700">ការរៀបចំផែនការយុទ្ធសាស្រ្ត និងការអនុវត្ត</span>
-                        </li>
-                        <li class="flex items-center">
-                            <div class="w-2 h-2 bg-purple-500 rounded-full mr-3"></div>
-                            <span class="text-gray-700">ការបង្កើនប្រសិទ្ធភាពការងារ</span>
-                        </li>
-                    </ul>
-                </div>
-                <div class="relative">
-                    <div class="bg-gradient-to-br from-pink-400 via-purple-500 to-blue-600 rounded-2xl p-8 text-white">
-                        <div class="flex justify-center mb-6">
-                            <div class="relative">
-                                <div class="w-32 h-20 bg-white bg-opacity-20 rounded-lg flex items-center justify-center">
-                                    <svg class="w-16 h-12 text-white" fill="currentColor" viewBox="0 0 20 20">
-                                        <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                                    </svg>
-                                </div>
-                                <div class="absolute -top-2 -right-2 w-6 h-6 bg-yellow-400 rounded-full"></div>
-                                <div class="absolute -bottom-2 -left-2 w-4 h-4 bg-pink-400 rounded-full"></div>
-                            </div>
-                        </div>
-                        <h3 class="text-xl font-semibold text-center mb-4">លទ្ធផលដែលបានបញ្ជាក់</h3>
-                        <p class="text-center text-white text-opacity-90">
-                            ចូលរួមជាមួយក្រុមហ៊ុនជោគជ័យរាប់រយ ដែលបានផ្លាស់ប្តូរអាជីវកម្មរបស់ពួកគេ ជាមួយនឹងការណែនាំយុទ្ធសាស្រ្តរបស់យើង។
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Leadership Team -->
-    <section class="py-16 bg-gray-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="container mx-auto px-4">
             <div class="text-center mb-12">
-                <h2 class="text-3xl font-bold text-gray-900 mb-4">ជួបប្រទះនឹងអ្នកដឹកនាំរបស់យើង</h2>
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">Meet Our Mentors</h2>
                 <p class="text-gray-600 max-w-2xl mx-auto">
-                    ក្រុមវិជ្ជាជនជំនាញដែលមានបទពិសោធន៍របស់យើង នាំយកបទពិសោធន៍រួមបញ្ចូលគ្នារាប់ទសវត្សរ៍ ដើម្បីជួយជំរុញអាជីវកម្មរបស់អ្នកឆ្ពោះទៅមុខ។
+                    សមាជិកដ៏មានទេពកោសល្យរបស់យើង ដែលបានចូលរួមចំណែកក្នុងការអភិវឌ្ឍន៍កីឡានៅកម្ពុជា
                 </p>
             </div>
 
-            <div class="grid md:grid-cols-2 gap-8 mb-12">
-                <div class="bg-white rounded-xl p-6 shadow-sm text-center">
-                    <div class="w-20 h-20 bg-gradient-to-br from-blue-400 to-blue-600 rounded-full mx-auto mb-4 flex items-center justify-center">
-                        <span class="text-white font-bold text-2xl">JD</span>
-                    </div>
-                    <h3 class="text-xl font-semibold text-gray-900 mb-2">លោក ជន ដេវីដសុន</h3>
-                    <p class="text-blue-600 font-medium mb-3">នាយកប្រតិបត្តិ</p>
-                    <p class="text-gray-600 text-sm">
-                        ដឹកនាំគំនិតផ្តួចផ្តើមការបំលែងអាជីវកម្ម ជាមួយនឹងបទពិសោធន៍ប្រតិបត្តិជាង ១៥ ឆ្នាំ ក្នុងការរៀបចំផែនការយុទ្ធសាស្រ្ត និងការអភិវឌ្ឍន៍អង្គភាព។
-                    </p>
-                </div>
+            <!-- Featured Mentors -->
+            <div id="featuredMentors" class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16 justify-items-center">
+                <!-- Featured mentors will be populated by JavaScript -->
+            </div>
 
-                <div class="bg-white rounded-xl p-6 shadow-sm text-center">
-                    <div class="w-20 h-20 bg-gradient-to-br from-pink-400 to-pink-600 rounded-full mx-auto mb-4 flex items-center justify-center">
-                        <span class="text-white font-bold text-2xl">SM</span>
-                    </div>
-                    <h3 class="text-xl font-semibold text-gray-900 mb-2">កញ្ញា សារ៉ាស មាទីនេស</h3>
-                    <p class="text-pink-600 font-medium mb-3">ប្រធានយុទ្ធសាស្រ្ត</p>
-                    <p class="text-gray-600 text-sm">
-                        ជំនាញក្នុងការវិភាគទីផ្សារ និងយុទ្ធសាស្រ្តកំណើន កញ្ញា សារ៉ាស បានជួយក្រុមហ៊ុនជាង ២០០ ក្នុងការសម្រេចបាននូវកំណើនអាជីវកម្មប្រកបដោយចីរភាព។
-                    </p>
+            <!-- Team Members Grid -->
+            <div class="text-center mb-8">
+                <h3 class="text-2xl font-bold text-gray-800 mb-4">Meet Our Members</h3>
+                <p class="text-gray-600">គ្រូបង្វឹក និងអ្នកជំនាញផ្សេងៗក្នុងវិស័យកីឡា</p>
+            </div>
+
+            <!-- First row: 3 cards -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8 justify-items-center">
+                <div id="membersRow1" class="contents">
+                    <!-- First 3 members will be populated here -->
+                </div>
+            </div>
+
+            <!-- Second row: 4 cards -->
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 justify-items-center">
+                <div id="membersRow2" class="contents">
+                    <!-- Last 4 members will be populated here -->
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Core Team -->
-    <section class="py-16 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl font-bold text-gray-900 mb-4">ក្រុមការងារស្នូលរបស់យើង</h2>
-                <p class="text-gray-600">
-                    ជួបប្រទះនឹងវិជ្ជាជនជំនាញដែលលះបង់ ដែលធ្វើឱ្យភាពជោគជ័យរបស់យើងក្លាយជាការពិត។
-                </p>
-            </div>
 
-            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <div class="text-center">
-                    <div class="w-16 h-16 bg-gradient-to-br from-green-400 to-green-600 rounded-full mx-auto mb-3 flex items-center justify-center">
-                        <span class="text-white font-semibold">MJ</span>
-                    </div>
-                    <h4 class="font-semibold text-gray-900">លោក មីកែល ចន្សុន</h4>
-                    <p class="text-sm text-gray-600">អ្នកវិភាគអាជីវកម្ម</p>
-                </div>
 
-                <div class="text-center">
-                    <div class="w-16 h-16 bg-gradient-to-br from-purple-400 to-purple-600 rounded-full mx-auto mb-3 flex items-center justify-center">
-                        <span class="text-white font-semibold">EW</span>
-                    </div>
-                    <h4 class="font-semibold text-gray-900">កញ្ញា អេមីលី វ៉ាតសុន</h4>
-                    <p class="text-sm text-gray-600">អ្នកគ្រប់គ្រងគម្រោង</p>
-                </div>
+    <script>
+        // Featured mentors data (simplified structure)
+        let featuredMentors = [{
+            name: "Lim Chanratana",
+            role: "Head Coach",
+            image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face",
+            socialLinks: [{
+                platform: "facebook",
+                url: "https://facebook.com/limchanratana",
+                icon: "fab fa-facebook-f"
+            }, {
+                platform: "twitter",
+                url: "https://twitter.com/limchanratana",
+                icon: "fab fa-twitter"
+            }, {
+                platform: "telegram",
+                url: "https://t.me/limchanratana",
+                icon: "fab fa-telegram-plane"
+            }]
+        }, {
+            name: "Sok Pisey",
+            role: "Swimming Instructor",
+            image: "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=150&h=150&fit=crop&crop=face",
+            socialLinks: [{
+                platform: "facebook",
+                url: "https://facebook.com/sokpisey",
+                icon: "fab fa-facebook-f"
+            }, {
+                platform: "instagram",
+                url: "https://instagram.com/sokpisey",
+                icon: "fab fa-instagram"
+            }, {
+                platform: "telegram",
+                url: "https://t.me/sokpisey",
+                icon: "fab fa-telegram-plane"
+            }]
+        }];
 
-                <div class="text-center">
-                    <div class="w-16 h-16 bg-gradient-to-br from-indigo-400 to-indigo-600 rounded-full mx-auto mb-3 flex items-center justify-center">
-                        <span class="text-white font-semibold">DL</span>
-                    </div>
-                    <h4 class="font-semibold text-gray-900">David Lee</h4>
-                    <p class="text-sm text-gray-600">Operations Director</p>
-                </div>
+        // Team members data - only 7 members (3 top row + 4 bottom row)
+        let members = [{
+            name: "Ms. Sophea",
+            role: "Fitness Trainer",
+            image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face",
+            socialLinks: [{
+                platform: "facebook",
+                url: "https://facebook.com/sophea",
+                icon: "fab fa-facebook-f"
+            }, {
+                platform: "instagram",
+                url: "https://instagram.com/sophea",
+                icon: "fab fa-instagram"
+            }]
+        }, {
+            name: "Mr. Samreth",
+            role: "Basketball Coach",
+            image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face",
+            socialLinks: [{
+                platform: "facebook",
+                url: "https://facebook.com/samreth",
+                icon: "fab fa-facebook-f"
+            }, {
+                platform: "telegram",
+                url: "https://t.me/samreth",
+                icon: "fab fa-telegram-plane"
+            }]
+        }, {
+            name: "Ms. Sreypov",
+            role: "Yoga Instructor",
+            image: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150&h=150&fit=crop&crop=face",
+            socialLinks: [{
+                platform: "instagram",
+                url: "https://instagram.com/sreypov",
+                icon: "fab fa-instagram"
+            }, {
+                platform: "telegram",
+                url: "https://t.me/sreypov",
+                icon: "fab fa-telegram-plane"
+            }]
+        }, {
+            name: "Mr. Dara",
+            role: "Martial Arts",
+            image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&h=150&fit=crop&crop=face",
+            socialLinks: [{
+                platform: "facebook",
+                url: "https://facebook.com/dara",
+                icon: "fab fa-facebook-f"
+            }, {
+                platform: "instagram",
+                url: "https://instagram.com/dara",
+                icon: "fab fa-instagram"
+            }]
+        }, {
+            name: "Ms. Channary",
+            role: "Tennis Coach",
+            image: "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=150&h=150&fit=crop&crop=face",
+            socialLinks: [{
+                platform: "facebook",
+                url: "https://facebook.com/channary",
+                icon: "fab fa-facebook-f"
+            }, {
+                platform: "twitter",
+                url: "https://twitter.com/channary",
+                icon: "fab fa-twitter"
+            }]
+        }, {
+            name: "Mr. Veasna",
+            role: "Volleyball Coach",
+            image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=150&h=150&fit=crop&crop=face",
+            socialLinks: [{
+                platform: "facebook",
+                url: "https://facebook.com/veasna",
+                icon: "fab fa-facebook-f"
+            }, {
+                platform: "telegram",
+                url: "https://t.me/veasna",
+                icon: "fab fa-telegram-plane"
+            }]
+        }, {
+            name: "Ms. Bopha",
+            role: "Badminton Coach",
+            image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&h=150&fit=crop&crop=face",
+            socialLinks: [{
+                platform: "instagram",
+                url: "https://instagram.com/bopha",
+                icon: "fab fa-instagram"
+            }, {
+                platform: "telegram",
+                url: "https://t.me/bopha",
+                icon: "fab fa-telegram-plane"
+            }]
+        }];
 
-                <div class="text-center">
-                    <div class="w-16 h-16 bg-gradient-to-br from-orange-400 to-orange-600 rounded-full mx-auto mb-3 flex items-center justify-center">
-                        <span class="text-white font-semibold">AC</span>
-                    </div>
-                    <h4 class="font-semibold text-gray-900">Anna Chen</h4>
-                    <p class="text-sm text-gray-600">Marketing Specialist</p>
-                </div>
-            </div>
+        // Function to render featured mentors
+        function renderFeaturedMentors() {
+            const featuredMentorsContainer = document.getElementById('featuredMentors');
+            featuredMentorsContainer.innerHTML = '';
 
-            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mt-8">
-                <div class="text-center">
-                    <div class="w-16 h-16 bg-gradient-to-br from-teal-400 to-teal-600 rounded-full mx-auto mb-3 flex items-center justify-center">
-                        <span class="text-white font-semibold">RT</span>
-                    </div>
-                    <h4 class="font-semibold text-gray-900">Robert Taylor</h4>
-                    <p class="text-sm text-gray-600">Financial Advisor</p>
-                </div>
+            featuredMentors.forEach((mentor, index) => {
+                        const mentorCard = document.createElement('div');
+                        mentorCard.className = 'bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-shadow border border-gray-100 w-80 h-72';
 
-                <div class="text-center">
-                    <div class="w-16 h-16 bg-gradient-to-br from-red-400 to-red-600 rounded-full mx-auto mb-3 flex items-center justify-center">
-                        <span class="text-white font-semibold">LB</span>
-                    </div>
-                    <h4 class="font-semibold text-gray-900">Lisa Brown</h4>
-                    <p class="text-sm text-gray-600">HR Manager</p>
-                </div>
+                        const socialLinksHTML = mentor.socialLinks.map(social =>
+                            `<a href="${social.url}" class="text-gray-600 hover:text-blue-600 transition-colors" target="_blank" rel="noopener noreferrer">
+                        <i class="${social.icon} text-lg"></i>
+                    </a>`
+                        ).join('');
 
-                <div class="text-center">
-                    <div class="w-16 h-16 bg-gradient-to-br from-yellow-400 to-yellow-600 rounded-full mx-auto mb-3 flex items-center justify-center">
-                        <span class="text-white font-semibold">KM</span>
-                    </div>
-                    <h4 class="font-semibold text-gray-900">Kevin Miller</h4>
-                    <p class="text-sm text-gray-600">Tech Lead</p>
-                </div>
-
-                <div class="text-center">
-                    <div class="w-16 h-16 bg-gradient-to-br from-cyan-400 to-cyan-600 rounded-full mx-auto mb-3 flex items-center justify-center">
-                        <span class="text-white font-semibold">JW</span>
-                    </div>
-                    <h4 class="font-semibold text-gray-900">Jessica Wilson</h4>
-                    <p class="text-sm text-gray-600">Client Relations</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="bg-yellow-400 py-12">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid md:grid-cols-4 gap-8">
-                <div class="md:col-span-2">
-                    <div class="flex items-center mb-4">
-                        <div class="w-10 h-10 bg-white rounded-lg flex items-center justify-center">
-                            <span class="text-yellow-500 font-bold text-xl">B</span>
+                        mentorCard.innerHTML = `
+                    <div class="text-center h-full flex flex-col justify-center">
+                        <div class="w-24 h-24 bg-gray-300 rounded-full mx-auto mb-6 overflow-hidden">
+                            ${mentor.image ? 
+                                `<img src="${mentor.image}" alt="${mentor.name}" class="w-full h-full object-cover" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                                 <div class="w-full h-full bg-gradient-to-b from-gray-400 to-gray-600 hidden"></div>` :
+                                `<div class="w-full h-full bg-gradient-to-b from-gray-400 to-gray-600"></div>`
+                            }
                         </div>
-                        <span class="ml-3 text-xl font-semibold text-white">ដំណោះស្រាយអាជីវកម្ម</span>
-                    </div>
-                    <p class="text-white text-opacity-90 mb-4">
-                        Empowering businesses to achieve their full potential through strategic consulting and innovative solutions.
-                    </p>
-                    <div class="flex space-x-4">
-                        <div class="w-8 h-8 bg-white bg-opacity-20 rounded-full flex items-center justify-center">
-                            <span class="text-white text-sm">f</span>
-                        </div>
-                        <div class="w-8 h-8 bg-white bg-opacity-20 rounded-full flex items-center justify-center">
-                            <span class="text-white text-sm">t</span>
-                        </div>
-                        <div class="w-8 h-8 bg-white bg-opacity-20 rounded-full flex items-center justify-center">
-                            <span class="text-white text-sm">in</span>
+                        <h3 class="font-bold text-gray-800 text-lg mb-2">${mentor.name}</h3>
+                        <p class="text-blue-600 font-semibold text-sm mb-6">${mentor.role}</p>
+                        <div class="flex justify-center space-x-4">
+                            ${socialLinksHTML}
                         </div>
                     </div>
-                </div>
+                `;
+                featuredMentorsContainer.appendChild(mentorCard);
+            });
+        }
 
-                <div>
-                    <h3 class="text-white font-semibold mb-4">Services</h3>
-                    <ul class="space-y-2">
-                        <li><a href="#" class="text-white text-opacity-80 hover:text-white">Strategy Consulting</a></li>
-                        <li><a href="#" class="text-white text-opacity-80 hover:text-white">Business Development</a></li>
-                        <li><a href="#" class="text-white text-opacity-80 hover:text-white">Market Research</a></li>
-                        <li><a href="#" class="text-white text-opacity-80 hover:text-white">Financial Planning</a></li>
-                    </ul>
-                </div>
+        // Function to render team members in 3-4 layout
+        function renderMembers() {
+            const membersRow1 = document.getElementById('membersRow1');
+            const membersRow2 = document.getElementById('membersRow2');
+            
+            // Clear both rows
+            membersRow1.innerHTML = '';
+            membersRow2.innerHTML = '';
 
-                <div>
-                    <h3 class="text-white font-semibold mb-4">Contact</h3>
-                    <ul class="space-y-2">
-                        <li class="text-white text-opacity-80">123 Business Ave</li>
-                        <li class="text-white text-opacity-80">Suite 100</li>
-                        <li class="text-white text-opacity-80">City, State 12345</li>
-                        <li class="text-white text-opacity-80">(555) 123-4567</li>
-                    </ul>
-                </div>
-            </div>
+            members.forEach((member, index) => {
+                const memberCard = document.createElement('div');
+                memberCard.className = 'bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-shadow w-72 h-64';
 
-            <div class="border-t border-white border-opacity-20 mt-8 pt-8 text-center">
-                <p class="text-white text-opacity-80">
-                    © 2025 Business Solutions. All rights reserved.
-                </p>
-            </div>
-        </div>
-    </footer>
+                const socialLinksHTML = member.socialLinks.map(social =>
+                    `<a href="${social.url}" class="text-gray-600 hover:text-blue-600 transition-colors" target="_blank" rel="noopener noreferrer">
+                        <i class="${social.icon} text-lg"></i>
+                    </a>`
+                ).join('');
+
+                memberCard.innerHTML = `
+                    <div class="text-center h-full flex flex-col justify-center">
+                        <div class="w-20 h-20 bg-gray-200 rounded-full mx-auto mb-4 overflow-hidden">
+                            ${member.image ? 
+                                `<img src="${member.image}" alt="${member.name}" class="w-full h-full object-cover" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                                 <div class="w-full h-full bg-gradient-to-b from-blue-400 to-blue-600 hidden"></div>` :
+                                '<div class="w-full h-full bg-gradient-to-b from-blue-400 to-blue-600"></div>'
+                            }
+                        </div>
+                        <h4 class="font-bold text-gray-800 text-base mb-2">${member.name}</h4>
+                        <p class="text-gray-500 text-sm mb-4">${member.role}</p>
+                        <div class="flex justify-center space-x-4">
+                            ${socialLinksHTML}
+                        </div>
+                    </div>
+                `;
+
+                // First 3 go to row 1, rest go to row 2
+                if (index < 3) {
+                    membersRow1.appendChild(memberCard);
+                } else {
+                    membersRow2.appendChild(memberCard);
+                }
+            });
+        }
+
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', function() {
+            renderFeaturedMentors();
+            renderMembers();
+        });
+
+        // Functions to manage featured mentors
+        function addFeaturedMentor(name, role, image = null, socialLinks = []) {
+            featuredMentors.push({ name, role, image, socialLinks });
+            renderFeaturedMentors();
+        }
+
+        function removeFeaturedMentor(index) {
+            featuredMentors.splice(index, 1);
+            renderFeaturedMentors();
+        }
+
+        function updateMentorSocials(index, socialLinks) {
+            if (featuredMentors[index]) {
+                featuredMentors[index].socialLinks = socialLinks;
+                renderFeaturedMentors();
+            }
+        }
+
+        function updateMentorImage(index, imageUrl) {
+            if (featuredMentors[index]) {
+                featuredMentors[index].image = imageUrl;
+                renderFeaturedMentors();
+            }
+        }
+
+        // Functions to manage team members
+        function addMember(name, role, image = null, socialLinks = []) {
+            members.push({ name, role, image, socialLinks });
+            renderMembers();
+        }
+
+        function removeMember(index) {
+            members.splice(index, 1);
+            renderMembers();
+        }
+
+        function updateMemberImage(index, imageUrl) {
+            if (members[index]) {
+                members[index].image = imageUrl;
+                renderMembers();
+            }
+        }
+
+        function updateMemberSocials(index, socialLinks) {
+            if (members[index]) {
+                members[index].socialLinks = socialLinks;
+                renderMembers();
+            }
+        }
+    </script>
 </body>
 
 </html>
