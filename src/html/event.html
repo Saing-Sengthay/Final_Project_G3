@@ -1,174 +1,641 @@
 <!DOCTYPE html>
-<html lang="km">
+<html lang="km" class="">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ISTAD - ស្ថាប័នបណ្តុះបណ្តាលកម្មវិធីកុំព្យូទ័រ</title>
+
+    <!-- 🔑 Title & Description -->
+    <title>Sportshub Cambodia – Sports Events & Tournaments</title>
+    <meta name="description" content="Discover upcoming sports events in Cambodia and around the world. Sportshub covers football, basketball, boxing, and international tournaments with schedules and updates.">
+
+    <!-- 📌 Keywords -->
+    <meta name="keywords" content="Cambodia sports events, ព្រឹត្តិការណ៍កីឡា, Cambodia football schedule, Khmer sports, live events, world tournaments, sports fixtures">
+
+    <!-- 🌍 Language -->
+    <meta http-equiv="Content-Language" content="en, km">
+
+    <!-- 👁 Open Graph for Social Media -->
+    <meta property="og:title" content="Sportshub – Sports Events in Cambodia & Worldwide">
+    <meta property="og:description" content="Stay updated with Cambodia and global sports events, football matches, and tournaments.">
+    <meta property="og:image" content="https://yourdomain.com/images/sportshub-events-banner.jpg">
+    <meta property="og:url" content="https://yourdomain.com/events">
+    <meta property="og:type" content="website">
+
+    <!-- 🏟️ Structured Data for Sports Events -->
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "SportsEvent",
+            "name": "Sportshub Cambodia – Upcoming Sports Events",
+            "startDate": "2025-09-01",
+            "endDate": "2025-12-31",
+            "eventAttendanceMode": "https://schema.org/MixedEventAttendanceMode",
+            "eventStatus": "https://schema.org/EventScheduled",
+            "location": {
+                "@type": "Place",
+                "name": "Cambodia",
+                "address": {
+                    "@type": "PostalAddress",
+                    "addressCountry": "KH"
+                }
+            },
+            "image": "https://yourdomain.com/images/sportshub-events-banner.jpg",
+            "description": "Stay updated with sports events in Cambodia and around the world – football, basketball, boxing, and more.",
+            "organizer": {
+                "@type": "Organization",
+                "name": "Sportshub",
+                "url": "https://yourdomain.com"
+            }
+        }
+    </script>
+
+    <!-- 🎨 Styles & Libraries -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+        /* Custom light mode styles */
+        
         body {
-            font-family: 'Roboto', sans-serif;
+            background-color: #F9FAFB;
+            /* bg-gray-50 */
         }
         
-        .khmer-text {
-            font-family: 'Khmer OS', 'Roboto', sans-serif;
+        .custom-bg {
+            background-color: white;
         }
         
-        .gradient-bg {
-            background: linear-gradient(135deg, #4A90E2 0%, #357ABD 100%);
+        .custom-text {
+            color: #4B5563;
+            /* text-gray-600 */
         }
         
-        .hero-section {
-            background: linear-gradient(rgba(74, 144, 226, 0.8), rgba(53, 122, 189, 0.8)), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%23f0f9ff" width="1200" height="600"/><circle fill="%23e0f2fe" cx="200" cy="150" r="100"/><circle fill="%23bae6fd" cx="800" cy="400" r="80"/></svg>');
-            background-size: cover;
-            background-position: center;
+        .post-button {
+            background-color: #3b82f6;
         }
         
-        .card-hover {
+        .see-more-btn {
+            background-color: #3b82f6;
+            color: white;
+        }
+        
+        .text-accent {
+            color: #3b82f6;
+        }
+        
+        .border-accent {
+            border-color: #3b82f6;
+        }
+        /* Clear heart background for better visibility */
+        
+        .heart-container {
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(4px);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+        }
+        /* Dark mode styles */
+        
+        .dark body {
+            background-color: #111827;
+            /* bg-gray-900 */
+        }
+        
+        .dark .custom-bg {
+            background-color: #1F2937;
+            /* bg-gray-800 */
+            border-color: #4B5563;
+            /* border-gray-600 */
+        }
+        
+        .dark .custom-text,
+        .dark .english-text,
+        .dark h2,
+        .dark h3,
+        .dark p,
+        .dark a:not(.post-button) {
+            color: #D1D5DB;
+            /* text-gray-300 */
+        }
+        
+        .dark nav a.text-accent {
+            color: #60A5FA;
+            border-color: #60A5FA;
+        }
+        
+        .dark nav a.custom-text:hover {
+            color: #60A5FA;
+        }
+        
+        .dark .border-b-2.border-gray-300,
+        .dark .border-t.border-gray-300,
+        .dark .border.border-gray-300 {
+            border-color: #4B5563;
+            /* border-gray-600 */
+        }
+        
+        .dark .text-gray-600 {
+            color: #D1D5DB;
+            /* text-gray-300 */
+        }
+        
+        .dark .hover\:text-red-500:hover {
+            color: #EF4444;
+            /* text-red-500 */
+        }
+        
+        .dark .bg-white {
+            background-color: #374151;
+            /* bg-gray-700 */
+        }
+        
+        .dark .text-gray-700 {
+            color: #E5E7EB;
+            /* text-gray-200 */
+        }
+        
+        .dark .see-more-btn {
+            background-color: #60A5FA;
+            color: #1F2937;
+        }
+        
+        .dark .filter-select,
+        .dark .search-input {
+            background-color: #374151;
+            border-color: #4B5563;
+        }
+        
+        .dark .text-gray-400 {
+            color: #9CA3AF;
+        }
+        /* Heart container dark mode */
+        
+        .dark .heart-container {
+            background-color: rgba(31, 41, 55, 0.95);
+            border: 1px solid rgba(75, 85, 99, 0.8);
+        }
+        /* Modal dark mode */
+        
+        .dark .modal-overlay {
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+        
+        .dark .modal-content {
+            background-color: #1F2937;
+            /* bg-gray-800 */
+        }
+        
+        .dark .success-modal-content {
+            background-color: #1F2937;
+        }
+        
+        .dark .form-input,
+        .dark .form-textarea,
+        .dark .form-select {
+            background-color: #374151;
+            border-color: #4B5563;
+            color: #D1D5DB;
+        }
+        
+        .dark .form-input::placeholder,
+        .dark .form-textarea::placeholder {
+            color: #9CA3AF;
+        }
+        
+        .dark .border-2.border-dashed.border-gray-300 {
+            border-color: #4B5563;
+        }
+        
+        .dark .text-gray-500 {
+            color: #9CA3AF;
+        }
+        
+        .dark #cancelBtn {
+            background-color: #374151;
+            border-color: #4B5563;
+            color: #D1D5DB;
+        }
+        
+        .dark #cancelBtn:hover {
+            background-color: #4B5563;
+        }
+        /* === Hero Slider Styles === */
+        
+        .hero-slider {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+            background-color: #111;
+        }
+        
+        .slide {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+            z-index: 1;
+            display: grid;
+            place-items: center;
+        }
+        
+        .slide.active {
+            opacity: 1;
+            z-index: 2;
+        }
+        
+        .slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(0.6);
+            grid-column: 1 / -1;
+            grid-row: 1 / -1;
+        }
+        
+        .slide-content {
+            grid-column: 1 / -1;
+            grid-row: 1 / -1;
+            text-align: center;
+            width: 90%;
+            max-width: 1200px;
+            z-index: 3;
+            color: white;
+        }
+        
+        .slide-content h2 {
+            font-size: clamp(2rem, 6vw, 4rem);
+            margin-bottom: 1rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: white;
+        }
+        
+        .slide-content p {
+            font-size: clamp(1rem, 2.5vw, 1.25rem);
+            margin-bottom: 2.5rem;
+            font-weight: 400;
+            line-height: 1.6;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            color: white;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background-image: linear-gradient(to right, #4A90E2, #3b82f6);
+            color: #fff;
+            padding: 16px 32px;
+            font-size: clamp(0.9rem, 2vw, 1.1rem);
+            text-decoration: none;
+            text-transform: uppercase;
+            font-weight: 700;
+            border-radius: 50px;
+            border: none;
+            transition: all 0.4s ease;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        /* Navigation Arrows */
+        
+        .slider-control {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.2);
+            color: #fff;
+            border: none;
+            padding: 10px;
+            border-radius: 50%;
+            cursor: pointer;
+            z-index: 10;
             transition: all 0.3s ease;
+            opacity: 0;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         
-        .card-hover:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        .hero-slider:hover .slider-control {
+            opacity: 1;
+        }
+        
+        .slider-control:hover {
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+        
+        .slider-control svg {
+            width: 24px;
+            height: 24px;
+        }
+        
+        .prev {
+            left: 20px;
+        }
+        
+        .next {
+            right: 20px;
+        }
+        /* Navigation Dots */
+        
+        .slider-dots {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            z-index: 10;
+            gap: 12px;
+        }
+        
+        .dot {
+            width: 25px;
+            height: 4px;
+            background-color: rgba(255, 255, 255, 0.3);
+            cursor: pointer;
+            transition: background-color 0.4s ease;
+            border-radius: 2px;
+        }
+        
+        .dot.active {
+            background-color: #fff;
+        }
+        /* === 404 Error Animation === */
+        
+        .error-animation {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10rem;
+            font-weight: 700;
+            color: #3b82f6;
+            /* text-accent */
+            position: relative;
+        }
+        
+        .dark .error-animation {
+            color: #60A5FA;
+        }
+        
+        .error-animation .four {
+            z-index: 1;
+        }
+        
+        .error-animation .zero {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 20px solid #3b82f6;
+            margin: 0 -15px;
+            animation: spin 4s linear infinite;
+            position: relative;
+        }
+        
+        .dark .error-animation .zero {
+            border-color: #60A5FA;
+        }
+        
+        .error-animation .zero .eye {
+            width: 20px;
+            height: 20px;
+            background-color: #3b82f6;
+            border-radius: 50%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation: blink 2s linear infinite;
+        }
+        
+        .dark .error-animation .zero .eye {
+            background-color: #60A5FA;
+        }
+        
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+        
+        @keyframes blink {
+            0%,
+            20%,
+            40%,
+            100% {
+                transform: translate(-50%, -50%) scale(1);
+            }
+            10%,
+            30% {
+                transform: translate(-50%, -50%) scale(1, 0.1);
+            }
+        }
+        /* Responsive Design */
+        
+        @media (max-width: 768px) {
+            .slide-content p {
+                display: none;
+            }
+            .slider-control {
+                opacity: 0.7;
+                width: 40px;
+                height: 40px;
+            }
+            .prev {
+                left: 10px;
+            }
+            .next {
+                right: 10px;
+            }
+            .error-animation {
+                font-size: 6rem;
+            }
+            .error-animation .zero {
+                width: 80px;
+                height: 80px;
+                border-width: 15px;
+            }
+            .error-animation .zero .eye {
+                width: 15px;
+                height: 15px;
+            }
+        }
+        /* Success Modal Styles */
+        
+        .success-modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+        
+        .success-modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .success-modal-content {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 0.5rem;
+            text-align: center;
+            max-width: 400px;
+            width: 90%;
+            transform: scale(0.9);
+            transition: transform 0.3s ease;
+        }
+        
+        .success-modal-overlay.active .success-modal-content {
+            transform: scale(1);
         }
     </style>
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 
-<body class="bg-gray-50">
-    <!-- Header -->
-    <header class="bg-white shadow-sm">
+<body>
+    <header class="custom-bg shadow-sm border-b border-gray-200 sticky top-0 z-40">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center py-4">
-                <!-- Logo -->
-                <div class="flex items-center">
-                    <div class="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center">
-                        <i class="fas fa-graduation-cap text-white text-lg"></i>
-                    </div>
+                <!-- Left: Logo -->
+                <div class="flex items-center" data-aos="fade-right">
+                    <img src="../../image/logo/logo.png" alt="Logo" class="h-[75px]">
                 </div>
 
-                <!-- Navigation -->
-                <nav class="hidden md:flex space-x-8">
-                    <a href="#" class="text-gray-700 hover:text-blue-600 transition-colors font-medium">Home</a>
-                    <a href="#" class="text-gray-700 hover:text-blue-600 transition-colors font-medium">Event</a>
-                    <a href="#" class="text-gray-700 hover:text-blue-600 transition-colors font-medium">About</a>
+                <!-- Center: Navigation - Use flexbox approach consistently -->
+                <nav class="hidden md:flex space-x-8" data-aos="fade-down">
+                    <a href="../../index.html" class="custom-text hover:text-accent transition-colors font-medium english-text">Home</a>
+                    <a href="../html/event.html" class="text-accent font-medium border-b-2 border-accent pb-1 english-text">Event</a>
+                    <a href="../html/about.html" class="custom-text hover:text-accent transition-colors font-medium english-text">About</a>
                 </nav>
 
-                <!-- Right Side Icons and Button -->
-                <div class="flex items-center space-x-4">
-                    <!-- Heart/Favorite Icon -->
+                <!-- Right: Action buttons -->
+                <div class="flex items-center space-x-4" data-aos="fade-left">
                     <button id="favoriteBtn" class="p-2 text-gray-600 hover:text-red-500 transition-colors relative">
-                        <i class="fas fa-heart text-xl"></i>
-                        <span id="favoriteCount" class="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center hidden">0</span>
+                    <i id="favoriteIcon" class="fas fa-heart text-xl"></i>
+                    <i id="favoriteSpinner" class="fas fa-spinner fa-spin text-xl hidden"></i>
+                    <span id="favoriteCount" class="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center hidden">0</span>
+                </button>
+                    <button id="theme-toggle" type="button" class="p-2 text-gray-600 hover:text-accent rounded-lg text-sm">
+                    <i id="theme-toggle-dark-icon" class="fas fa-moon text-xl hidden"></i>
+                    <i id="theme-toggle-light-icon" class="fas fa-sun text-xl hidden"></i>
+                </button>
+                    <button id="postEventBtn" class="post-button text-white px-4 py-2 rounded-lg flex items-center space-x-2">
+                    <i class="fas fa-plus"></i>
+                    <span class="english-text">Post</span>
+                </button>
+                    <div class="md:hidden flex items-center">
+                        <button id="mobile-menu-button" class="p-2 text-gray-600 hover:text-accent transition-colors">
+                        <i class="fas fa-bars text-xl"></i>
                     </button>
-
-                    <!-- Account Icon -->
-                    <button class="p-2 text-gray-600 hover:text-blue-600 transition-colors">
-                        <i class="fas fa-user-circle text-xl"></i>
-                    </button>
-
-                    <!-- Post Button -->
-                    <button id="postEventBtn" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors flex items-center space-x-2">
-                        <i class="fas fa-plus"></i>
-                        <span>Post</span>
-                    </button>
+                    </div>
                 </div>
+            </div>
+            <!-- Mobile menu -->
+            <div id="mobile-menu" class="hidden md:hidden">
+                <a href="../../index.html" class="block py-2 px-4 text-sm custom-text hover:text-accent">Home</a>
+                <a href="../html/event.html" class="block py-2 px-4 text-sm text-accent">Event</a>
+                <a href="../html/about.html" class="block py-2 px-4 text-sm custom-text hover:text-accent">About</a>
             </div>
         </div>
     </header>
 
-    <!-- Post New Event Modal -->
-    <div id="postEventModal" class="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center hidden">
-        <div class="bg-white rounded-lg shadow-xl max-w-md w-full mx-4 max-h-[90vh] overflow-y-auto">
+    <div id="postEventModal" class="modal-overlay">
+        <div class="modal-content">
             <div class="p-6">
-                <!-- Modal Header -->
                 <div class="flex justify-between items-center mb-6">
-                    <h2 class="text-xl font-bold text-gray-800">Post New Event</h2>
+                    <h2 class="text-xl font-bold custom-text english-text">Post New Event</h2>
                     <button id="closeModal" class="text-gray-500 hover:text-gray-700">
                         <i class="fas fa-times text-xl"></i>
                     </button>
                 </div>
 
-                <!-- Event Form -->
                 <form id="eventForm" class="space-y-4">
-                    <!-- Event Title -->
                     <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-2">Event Title</label>
-                        <input type="text" id="eventTitle" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500" placeholder="Enter event title">
+                        <label class="block text-sm font-medium custom-text mb-2 english-text">Event Title *</label>
+                        <input type="text" id="eventTitle" required class="form-input" placeholder="Enter event title">
                     </div>
 
-                    <!-- Event Description -->
                     <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-2">Event Description</label>
-                        <textarea id="eventDescription" rows="3" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500" placeholder="Describe your event"></textarea>
+                        <label class="block text-sm font-medium custom-text mb-2 english-text">Event Description</label>
+                        <textarea id="eventDescription" rows="3" class="form-textarea" placeholder="Describe your event"></textarea>
                     </div>
 
-                    <!-- Date and Time -->
-                    <div class="grid grid-cols-2 gap-4">
-                        <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-2">Date</label>
-                            <input type="date" id="eventDate" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
-                        </div>
-                        <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-2">Time</label>
-                            <input type="time" id="eventTime" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
-                        </div>
+                    <div>
+                        <label class="block text-sm font-medium custom-text mb-2 english-text">Date *</label>
+                        <input type="date" id="eventDate" required class="form-input">
                     </div>
 
-                    <!-- Location -->
                     <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-2">Location</label>
-                        <input type="text" id="eventLocation" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500" placeholder="Event location">
+                        <label class="block text-sm font-medium custom-text mb-2 english-text">Location *</label>
+                        <input type="text" id="eventLocation" required class="form-input" placeholder="Event location">
                     </div>
 
-                    <!-- Category -->
                     <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-2">Category</label>
-                        <select id="eventCategory" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                        <label class="block text-sm font-medium custom-text mb-2 english-text">Latitude *</label>
+                        <input type="number" id="eventLatitude" step="any" required class="form-input" placeholder="e.g., 11.57828">
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium custom-text mb-2 english-text">Longitude *</label>
+                        <input type="number" id="eventLongitude" step="any" required class="form-input" placeholder="e.g., 104.90178">
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium custom-text mb-2 english-text">Category *</label>
+                        <select id="eventCategory" required class="form-select">
                             <option value="">Select category</option>
-                            <option value="sports">Sports</option>
-                            <option value="culture">Culture</option>
-                            <option value="technology">Technology</option>
-                            <option value="academic">Academic</option>
+                            <option value="Football">Football</option>
+                            <option value="Swimming">Swimming</option>
+                            <option value="Running">Running</option>
+                            <option value="Tennis">Tennis</option>
+                            <option value="Golf">Golf</option>
+                            <option value="Olympics">Olympics</option>
+                            <option value="Taekwondo">Taekwondo</option>
+                            <option value="SEA Games">SEA Games</option>
+                            <option value="Boxing">Boxing</option>
+                            <option value="Skate">Skate</option>
+                            <option value="Volleyball">Volleyball</option>
                         </select>
                     </div>
 
-                    <!-- Event Image Upload -->
                     <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-2">Event Image</label>
-                        <div class="border-2 border-dashed border-gray-300 rounded-lg p-4 text-center hover:border-blue-400 transition-colors">
-                            <input type="file" id="eventImage" accept="image/*" class="hidden">
+                        <label class="block text-sm font-medium custom-text mb-2 english-text">Event Image</label>
+                        <div class="border-2 border-dashed border-gray-300 rounded-lg p-4 text-center hover:border-accent transition-colors">
+                            <input type="file" id="eventImage" accept="image/**" class="hidden">
                             <label for="eventImage" class="cursor-pointer">
                                 <i class="fas fa-cloud-upload-alt text-3xl text-gray-400 mb-2"></i>
-                                <p class="text-sm text-gray-500">Click to upload image</p>
+                                <p class="text-sm text-gray-500 english-text">Click to upload image</p>
                             </label>
+                            <img id="imagePreview" class="image-preview hidden mx-auto">
                         </div>
                     </div>
 
-                    <!-- Registration Fee -->
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-2">Registration Fee</label>
-                        <div class="relative">
-                            <span class="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500">$</span>
-                            <input type="number" id="eventFee" class="w-full pl-8 pr-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500" placeholder="0.00" min="0" step="0.01">
-                        </div>
-                    </div>
-
-                    <!-- Contact Information -->
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-2">Contact Information</label>
-                        <input type="text" id="eventContact" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500" placeholder="Phone number or email">
-                    </div>
-
-                    <!-- Form Buttons -->
                     <div class="flex space-x-3 pt-4">
-                        <button type="button" id="cancelBtn" class="flex-1 px-4 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors">
+                        <button type="button" id="cancelBtn" class="flex-1 px-4 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors english-text">
                             Cancel
                         </button>
-                        <button type="submit" class="flex-1 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
+                        <button type="submit" id="postEventModal" class="flex-1 px-4 py-2 post-button text-white rounded-lg english-text">
                             Post Event
                         </button>
                     </div>
@@ -177,518 +644,212 @@
         </div>
     </div>
 
-    <!-- Hero Section -->
-    <section class="hero-section py-16">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between mb-8">
-                <button class="text-white hover:text-blue-200 transition-colors">
-                    <i class="fas fa-chevron-left text-2xl"></i>
-                </button>
-
-                <div class="text-center">
-                    <div class="flex items-center justify-center mb-4">
-                        <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center mr-4">
-                            <i class="fas fa-graduation-cap text-blue-600 text-2xl"></i>
-                        </div>
-                        <h1 class="text-4xl font-bold text-white">ISTAD</h1>
-                    </div>
-                    <p class="text-blue-100 text-lg khmer-text">ស្ថាប័នបណ្តុះបណ្តាលកម្មវិធីកុំព្យូទ័រ</p>
-                </div>
-
-                <button class="text-white hover:text-blue-200 transition-colors">
-                    <i class="fas fa-chevron-right text-2xl"></i>
-                </button>
-            </div>
-
-            <!-- Group Photo -->
-            <div class="bg-white rounded-lg p-4 shadow-lg">
-                <div class="aspect-video bg-gradient-to-r from-green-400 to-blue-500 rounded-lg flex items-center justify-center relative overflow-hidden">
-                    <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black opacity-20"></div>
-                    <div class="text-center z-10">
-                        <i class="fas fa-users text-white text-6xl mb-4"></i>
-                        <p class="text-white text-lg font-semibold">ក្រុមសិស្សអនុបណ្ឌិត ISTAD</p>
-                        <p class="text-blue-100">រូបភាពជាក្រុម នៅលើទីលានកីឡា</p>
-                    </div>
-                </div>
+    <section id="hero-section" class="hero-slider">
+        <div class="slide active">
+            <img src="https://i.pinimg.com/1200x/23/3d/3c/233d3c045cf5a6d570fa5a064c769d83.jpg" alt="Sports Event 1" onerror="this.onerror=null;this.src='https://placehold.co/1920x1080/222/fff?text=Sports+Event+1';">
+            <div class="slide-content">
+                <h2 data-aos="fade-up">ស្វែងរកព្រឹត្តិការណ៍កីឡាជាមួយ</h2>
+                <h2 data-aos="fade-up">SportsHub</h2>
+                <p data-aos="fade-up" data-aos-delay="200">ស្វែងរកព្រឹត្តិការណ៍កីឡាដែលអ្នកចូលចិត្តពីក្នុងស្រុក និងអន្ដរជាតិ</p>
+                <a href="#eventsContainer" class="cta-button" data-aos="fade-up" data-aos-delay="400">ព្រឹត្តិការណ៍កីឡា</a>
             </div>
         </div>
+        <div class="slide">
+            <img src="https://i.pinimg.com/1200x/4a/e3/ee/4ae3ee1d0b6a84cd32c1a13de919fa80.jpg" alt="Sports Event 2" onerror="this.onerror=null;this.src='https://placehold.co/1920x1080/222/fff?text=Sports+Event+2';">
+            <div class="slide-content">
+                <h2 data-aos="fade-up">ភ្ជាប់ទំនាក់ទំនងជាមួយសហគមន៍កីឡានៅក្នុង​ </h2>
+                <h2 data-aos="fade-up">SportsHub</h2>
+                <p data-aos="fade-up" data-aos-delay="200">បង្ហោះព្រឹត្តិការណ៍ផ្ទាល់ខ្លួនរបស់អ្នក និងភ្ជាប់ទំនាក់ទំនងជាមួយអ្នកស្រលាញ់កីឡា និងកីឡាករផ្សេងទៀត</p>
+                <a href="#postEventBtn" class="cta-button" data-aos="fade-up" data-aos-delay="400">បង្ហោះព្រឹត្តិការណ៍</a>
+            </div>
+        </div>
+        <div class="slide">
+            <img src="https://i.pinimg.com/1200x/43/2a/dd/432add61ba60ffd44ea4d8e8a40e46cc.jpg" alt="Sports Event 3" onerror="this.onerror=null;this.src='https://placehold.co/1920x1080/222/fff?text=Sports+Event+3';">
+            <div class="slide-content">
+                <h2 data-aos="fade-up">បណ្ដុំនៃកីឡាសម្រាប់លោកអ្នក</h2>
+                <h2 data-aos="fade-up">SportsHub</h2>
+                <p data-aos="fade-up" data-aos-delay="200">ព័ត៌មានកីឡានិងព្រឹត្តិការណ៍កីឡាក្នុងស្រុក និងអន្ដរជាតិ រក្សាឱ្យបានព័ត៌មានថ្មីៗ និងភ្ជាប់ទំនាក់ទំនងជាមួយអ្នកស្រលាញ់កីឡាផ្សេងទៀត</p>
+                <a href="#categoryFilter" class="cta-button" data-aos="fade-up" data-aos-delay="400">ស្វែងរកកីឡាដែលអ្នកចូលចិត្ត</a>
+            </div>
+        </div>
+
+        <button class="slider-control prev">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" /></svg>
+        </button>
+        <button class="slider-control next">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg>
+        </button>
+
+        <div class="slider-dots"></div>
     </section>
 
-    <!-- Main Content -->
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <!-- Upcoming Events -->
-        <section class="mb-12">
-            <div class="flex items-center justify-between mb-6">
-                <h2 class="text-2xl font-bold text-gray-800 khmer-text">ព្រឹត្តិការណ៍ដែលនឹងមកដល់</h2>
-                <div class="flex space-x-2">
-                    <button class="bg-blue-100 text-blue-600 px-4 py-2 rounded-lg hover:bg-blue-200 transition-colors">
-                        កីឡា
-                    </button>
-                    <button class="bg-gray-100 text-gray-600 px-4 py-2 rounded-lg hover:bg-gray-200 transition-colors">
-                        វប្បធម៌
-                    </button>
-                    <button class="bg-gray-100 text-gray-600 px-4 py-2 rounded-lg hover:bg-gray-200 transition-colors">
-                        បច្ចេកវិទ្យា
-                    </button>
+        <!-- 404 Error Animation Container -->
+        <div id="error-404-container" class="hidden flex-col items-center justify-center text-center py-20">
+            <div class="error-animation">
+                <div class="four">4</div>
+                <div class="zero">
+                    <div class="eye"></div>
                 </div>
+                <div class="four">4</div>
             </div>
+            <h2 class="text-3xl font-bold custom-text mt-8">Oops! Something Went Wrong</h2>
+            <p class="custom-text mt-2">We couldn't load the event data. Please check your connection and try again later.</p>
+        </div>
 
-            <div class="grid md:grid-cols-3 gap-6">
-                <!-- Event Card 1 -->
-                <div class="bg-white rounded-lg shadow-md overflow-hidden card-hover">
-                    <div class="aspect-video bg-green-500 flex items-center justify-center relative">
-                        <i class="fas fa-running text-white text-4xl"></i>
-                        <div class="absolute top-3 right-3 bg-white rounded-full p-2">
-                            <i class="fas fa-heart text-red-500"></i>
-                        </div>
-                    </div>
-                    <div class="p-4">
-                        <h3 class="font-semibold text-gray-800 mb-2 khmer-text">ការប្រកួតកីឡាបាល់ទាត់រវាងនិស្សិត</h3>
-                        <div class="flex items-center text-gray-500 text-sm mb-2">
-                            <i class="fas fa-calendar-alt mr-2"></i>
-                            <span>១៥ កុម្ភៈ ២០២៥</span>
-                        </div>
-                        <div class="flex items-center text-gray-500 text-sm">
-                            <i class="fas fa-map-marker-alt mr-2"></i>
-                            <span>ទីលានកីឡា ISTAD</span>
-                        </div>
-                    </div>
-                </div>
+        <section id="events-section" class="mb-12">
+            <header id="events-header" class="flex flex-col md:flex-row md:items-center justify-between mb-6 gap-4 border-b-2 border-gray-300 pb-4" data-aos="fade-up">
+                <h2 class="text-3xl font-bold custom-text khmer-text">ព្រឹត្តិការណ៍</h2>
 
-                <!-- Event Card 2 -->
-                <div class="bg-white rounded-lg shadow-md overflow-hidden card-hover">
-                    <div class="aspect-video bg-blue-500 flex items-center justify-center relative">
-                        <i class="fas fa-swimmer text-white text-4xl"></i>
-                        <div class="absolute top-3 right-3 bg-white rounded-full p-2">
-                            <i class="fas fa-heart text-red-500"></i>
+                <nav class="flex flex-col sm:flex-row items-start sm:items-center gap-4">
+                    <div class="flex items-center space-x-2">
+                        <div class="relative">
+                            <select id="categoryFilter" class="filter-select border border-gray-300 rounded-lg px-4 py-2 pr-8 custom-text focus:outline-none focus:ring-2 focus:ring-accent focus:border-accent min-w-32">
+                                </select>
+                            <i class="fas fa-chevron-down absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 pointer-events-none"></i>
                         </div>
                     </div>
-                    <div class="p-4">
-                        <h3 class="font-semibold text-gray-800 mb-2 khmer-text">ការប្រកួតហែលទឹក ក្នុងអាងហែលទឹក</h3>
-                        <div class="flex items-center text-gray-500 text-sm mb-2">
-                            <i class="fas fa-calendar-alt mr-2"></i>
-                            <span>២០ កុម្ភៈ ២០២៥</span>
-                        </div>
-                        <div class="flex items-center text-gray-500 text-sm">
-                            <i class="fas fa-map-marker-alt mr-2"></i>
-                            <span>អាងហែលទឹកជាតិ</span>
-                        </div>
-                    </div>
-                </div>
 
-                <!-- Event Card 3 -->
-                <div class="bg-white rounded-lg shadow-md overflow-hidden card-hover">
-                    <div class="aspect-video bg-purple-500 flex items-center justify-center relative">
-                        <i class="fas fa-trophy text-white text-4xl"></i>
-                        <div class="absolute top-3 right-3 bg-white rounded-full p-2">
-                            <i class="fas fa-heart text-red-500"></i>
-                        </div>
+                    <div class="relative">
+                        <input type="text" id="searchInput" placeholder="Search events..." class="search-input border border-gray-300 rounded-lg px-4 py-2 pl-10 custom-text focus:outline-none focus:ring-2 focus:ring-accent focus:border-accent w-full sm:w-64">
+                        <i class="fas fa-search absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
                     </div>
-                    <div class="p-4">
-                        <h3 class="font-semibold text-gray-800 mb-2 khmer-text">ពិធីប្រគល់រង្វាន់ នៅពេលបញ្ចប់ការប្រកួត</h3>
-                        <div class="flex items-center text-gray-500 text-sm mb-2">
-                            <i class="fas fa-calendar-alt mr-2"></i>
-                            <span>២៥ កុម្ភៈ ២០២៥</span>
-                        </div>
-                        <div class="flex items-center text-gray-500 text-sm">
-                            <i class="fas fa-map-marker-alt mr-2"></i>
-                            <span>សាលកម្មវិធី ISTAD</span>
-                        </div>
-                    </div>
-                </div>
+                </nav>
+            </header>
 
-                <!-- Event Card 4 -->
-                <div class="bg-white rounded-lg shadow-md overflow-hidden card-hover">
-                    <div class="aspect-video bg-indigo-600 flex items-center justify-center relative">
-                        <i class="fas fa-star text-white text-4xl"></i>
-                        <div class="absolute top-3 right-3 bg-white rounded-full p-2">
-                            <i class="fas fa-heart text-red-500"></i>
-                        </div>
-                    </div>
-                    <div class="p-4">
-                        <h3 class="font-semibold text-gray-800 mb-2 khmer-text">ពិធីបើកកីឡាជាប្រចាំឆ្នាំ របស់ ISTAD</h3>
-                        <div class="flex items-center text-gray-500 text-sm mb-2">
-                            <i class="fas fa-calendar-alt mr-2"></i>
-                            <span>១០ មីនា ២០២៥</span>
-                        </div>
-                        <div class="flex items-center text-gray-500 text-sm">
-                            <i class="fas fa-map-marker-alt mr-2"></i>
-                            <span>ពហុកីឡដ្ឋានជាតិ</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Event Card 5 -->
-                <div class="bg-white rounded-lg shadow-md overflow-hidden card-hover">
-                    <div class="aspect-video bg-red-500 flex items-center justify-center relative">
-                        <i class="fas fa-table-tennis text-white text-4xl"></i>
-                        <div class="absolute top-3 right-3 bg-white rounded-full p-2">
-                            <i class="fas fa-heart text-red-500"></i>
-                        </div>
-                    </div>
-                    <div class="p-4">
-                        <h3 class="font-semibold text-gray-800 mb-2 khmer-text">ការប្រកួតកីឡាលុកពាន់ ក្នុងរបៀបពង់</h3>
-                        <div class="flex items-center text-gray-500 text-sm mb-2">
-                            <i class="fas fa-calendar-alt mr-2"></i>
-                            <span>០៥ មេសា ២០២៥</span>
-                        </div>
-                        <div class="flex items-center text-gray-500 text-sm">
-                            <i class="fas fa-map-marker-alt mr-2"></i>
-                            <span>សាលកីឡា ISTAD</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Event Card 6 -->
-                <div class="bg-white rounded-lg shadow-md overflow-hidden card-hover">
-                    <div class="aspect-video bg-orange-500 flex items-center justify-center relative">
-                        <i class="fas fa-medal text-white text-4xl"></i>
-                        <div class="absolute top-3 right-3 bg-white rounded-full p-2">
-                            <i class="fas fa-heart text-red-500"></i>
-                        </div>
-                    </div>
-                    <div class="p-4">
-                        <h3 class="font-semibold text-gray-800 mb-2 khmer-text">ជម្រើសនិស្សិតល្អឥតខ្ចោះ កម្មវិធីកីឡា</h3>
-                        <div class="flex items-center text-gray-500 text-sm mb-2">
-                            <i class="fas fa-calendar-alt mr-2"></i>
-                            <span>១០ មេសា ២០២៥</span>
-                        </div>
-                        <div class="flex items-center text-gray-500 text-sm">
-                            <i class="fas fa-map-marker-alt mr-2"></i>
-                            <span>សាលាធំ ISTAD</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <div id="eventsContainer" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         </section>
-
-        <!-- Other Events -->
-        <section class="mb-12">
-            <h2 class="text-2xl font-bold text-gray-800 mb-6 khmer-text">ព្រឹត្តិការណ៍ផ្សេងទៀត</h2>
-
-            <div class="grid md:grid-cols-3 gap-6">
-                <!-- Other Event Card 1 -->
-                <div class="bg-white rounded-lg shadow-md overflow-hidden card-hover">
-                    <div class="aspect-video bg-cyan-500 flex items-center justify-center">
-                        <i class="fas fa-swimmer text-white text-4xl"></i>
-                    </div>
-                    <div class="p-4">
-                        <h3 class="font-semibold text-gray-800 mb-2 khmer-text">ការហ្វឹកហាត់ហែលទឹកសម្រាប់បុរសនិងស្រ្តី</h3>
-                        <div class="flex items-center text-gray-500 text-sm">
-                            <i class="fas fa-calendar-alt mr-2"></i>
-                            <span>រៀងរាល់ថ្ងៃសៅរ៍</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Other Event Card 2 -->
-                <div class="bg-white rounded-lg shadow-md overflow-hidden card-hover">
-                    <div class="aspect-video bg-yellow-500 flex items-center justify-center">
-                        <i class="fas fa-dumbbell text-white text-4xl"></i>
-                    </div>
-                    <div class="p-4">
-                        <h3 class="font-semibold text-gray-800 mb-2 khmer-text">ការហ្វឹកហាត់កាយសម្ពាធ នៅក្នុងកន្លែងហ្វឹកហាត់</h3>
-                        <div class="flex items-center text-gray-500 text-sm">
-                            <i class="fas fa-calendar-alt mr-2"></i>
-                            <span>រៀងរាល់ថ្ងៃអង្គារ</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Other Event Card 3 -->
-                <div class="bg-white rounded-lg shadow-md overflow-hidden card-hover">
-                    <div class="aspect-video bg-pink-500 flex items-center justify-center">
-                        <i class="fas fa-music text-white text-4xl"></i>
-                    </div>
-                    <div class="p-4">
-                        <h3 class="font-semibold text-gray-800 mb-2 khmer-text">ការប្រគំតន្ត្រី និងរបាំប្រពៃណី ខ្មែរ</h3>
-                        <div class="flex items-center text-gray-500 text-sm">
-                            <i class="fas fa-calendar-alt mr-2"></i>
-                            <span>១៥ ឧសភា ២០២៥</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Other Event Card 4 -->
-                <div class="bg-white rounded-lg shadow-md overflow-hidden card-hover">
-                    <div class="aspect-video bg-green-600 flex items-center justify-center">
-                        <i class="fas fa-futbol text-white text-4xl"></i>
-                    </div>
-                    <div class="p-4">
-                        <h3 class="font-semibold text-gray-800 mb-2 khmer-text">ការប្រកួតបាល់ទាត់រវាងសាកលវិទ្យាល័យ</h3>
-                        <div class="flex items-center text-gray-500 text-sm">
-                            <i class="fas fa-calendar-alt mr-2"></i>
-                            <span>២០ ឧសភា ២០២៥</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Other Event Card 5 -->
-                <div class="bg-white rounded-lg shadow-md overflow-hidden card-hover">
-                    <div class="aspect-video bg-purple-600 flex items-center justify-center">
-                        <i class="fas fa-basketball-ball text-white text-4xl"></i>
-                    </div>
-                    <div class="p-4">
-                        <h3 class="font-semibold text-gray-800 mb-2 khmer-text">ការប្រកួតកីឡាបាល់បោះ ជំនាន់ថ្មី</h3>
-                        <div class="flex items-center text-gray-500 text-sm">
-                            <i class="fas fa-calendar-alt mr-2"></i>
-                            <span>២៥ ឧសភា ២០២៥</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Other Event Card 6 -->
-                <div class="bg-white rounded-lg shadow-md overflow-hidden card-hover">
-                    <div class="aspect-video bg-teal-600 flex items-center justify-center">
-                        <i class="fas fa-volleyball-ball text-white text-4xl"></i>
-                    </div>
-                    <div class="p-4">
-                        <h3 class="font-semibold text-gray-800 mb-2 khmer-text">ការប្រកួតកីឡាបាល់ឆែវ រវាងកម្រិតថ្នាក់</h3>
-                        <div class="flex items-center text-gray-500 text-sm">
-                            <i class="fas fa-calendar-alt mr-2"></i>
-                            <span>៣០ ឧសភា ២០២៥</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Load More Button -->
-        <div class="text-center mb-12">
-            <button class="bg-blue-600 text-white px-8 py-3 rounded-lg hover:bg-blue-700 transition-colors">
-                <i class="fas fa-plus mr-2"></i>
-                មើលបន្ថែម
-            </button>
+        <nav class="text-center mt-8" data-aos="fade-up">
+            <button id="seeMoreBtn" class="see-more-btn rounded-full px-8 py-2 font-medium">មើលបន្ថែម</button>
+        </nav>
         </div>
     </main>
 
-    <!-- Footer -->
-    <footer class="bg-gray-800 text-white py-12">
+    <div id="successPostModal" class="success-modal-overlay">
+        <div class="success-modal-content custom-bg">
+            <div class="text-green-500 text-6xl mb-4">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <h2 class="text-2xl font-bold custom-text mb-2">Success!</h2>
+            <p class="custom-text mb-6">Your event has been posted successfully.</p>
+            <button id="successOkBtn" class="post-button text-white px-8 py-2 rounded-lg">
+                OK
+            </button>
+        </div>
+    </div>
+
+
+    <footer class="custom-bg py-12">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid md:grid-cols-4 gap-8">
-                <div>
-                    <h3 class="text-lg font-semibold mb-4 khmer-text">បង្កើតដោយ</h3>
-                    <div class="flex items-center space-x-3 mb-4">
-                        <div class="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center">
-                            <i class="fas fa-graduation-cap text-white"></i>
-                        </div>
-                        <span class="font-semibold">ISTAD</span>
-                    </div>
-                    <p class="text-gray-400 text-sm khmer-text">ស្ថាប័នបណ្តុះបណ្តាលកម្មវិធីកុំព្យូទ័រ</p>
+            <div class="grid md:grid-cols-5 gap-8">
+                <div data-aos="fade-up" data-aos-anchor-placement="top-bottom">
+                    <h1 class="text-lg font-semibold mb-4 english-text">Organized By</h1>
+                    <img src="../../image/logo/istad.png" alt="ISTAD Logo" class="w-20 h-15 mb-4" onerror="this.onerror=null;this.src='https://placehold.co/80x60/ffffff/000000?text=ISTAD';">
                 </div>
 
-                <div>
-                    <h3 class="text-lg font-semibold mb-4 khmer-text">រៀបចំដោយ</h3>
-                    <div class="flex items-center space-x-3 mb-4">
-                        <div class="w-10 h-10 bg-green-600 rounded-full flex items-center justify-center">
-                            <i class="fas fa-code text-white"></i>
-                        </div>
-                        <span class="font-semibold">កម្មវិធីសិក្សា</span>
-                    </div>
-                    <p class="text-gray-400 text-sm">បច្ចេកវិទ្យាព័ត៌មាន</p>
+                <div data-aos="fade-up" data-aos-delay="100" data-aos-anchor-placement="top-bottom">
+                    <h1 class="text-lg font-semibent mb-4 english-text">Prepared By</h1>
+                    <img src="../../image/logo/logo.png" alt="sportshub Logo" class="w-21 h-20 mb-4" onerror="this.onerror=null;this.src='https://placehold.co/84x80/ffffff/000000?text=Logo';">
                 </div>
-
-                <div>
-                    <h3 class="text-lg font-semibold mb-4 khmer-text">ប្រភេទ</h3>
-                    <ul class="space-y-2 text-gray-400">
-                        <li><a href="#" class="hover:text-white transition-colors">កីឡា</a></li>
-                        <li><a href="#" class="hover:text-white transition-colors">វប្បធម៌</a></li>
-                        <li><a href="#" class="hover:text-white transition-colors">បច្ចេកវិទ្យា</a></li>
-                        <li><a href="#" class="hover:text-white transition-colors">ការប្រកួត</a></li>
+                <nav data-aos="fade-up" data-aos-delay="300" data-aos-anchor-placement="top-bottom">
+                    <h3 class="text-lg font-semibold mb-4 english-text">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="../../index.html" class="custom-text hover:text-accent transition-colors english-text">Home</a></li>
+                        <li><a href="../html/event.html" class="custom-text hover:text-accent transition-colors english-text">Event</a></li>
+                        <li><a href="../html/about.html" class="custom-text hover:text-accent transition-colors english-text">About</a></li>
                     </ul>
-                </div>
+                </nav>
+                <nav data-aos="fade-up" data-aos-delay="400" data-aos-anchor-placement="top-bottom">
+                    <h3 class="text-lg font-semibold mb-4 english-text">Contact Us</h3>
 
-                <div>
-                    <h3 class="text-lg font-semibold mb-4 khmer-text">តំណភ្ជាប់រហ័ស</h3>
-                    <ul class="space-y-2 text-gray-400">
-                        <li><a href="#" class="hover:text-white transition-colors">ទំព័រដើម</a></li>
-                        <li><a href="#" class="hover:text-white transition-colors">ព័ត៌មាន</a></li>
-                        <li><a href="#" class="hover:text-white transition-colors">ទំនាក់ទំនង</a></li>
-                        <li><a href="#" class="hover:text-white transition-colors">ជំនួយ</a></li>
+                    <ul class="space-y-2">
+                        <li>
+                            <a href="#" class="custom-text hover:text-accent transition-colors english-text text-gray-600 hover:text-accent transition-colors">
+                                <i class="fa-solid fa-envelope "></i> info@sporthub.com
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="custom-text hover:text-accent transition-colors english-text text-gray-600 hover:text-accent transition-colors">
+                                <i class="fa-solid fa-location-dot "></i> #24, Street 562, Sangkat Boeung Kak I, Khan Toul Kork, Phnom Penh, Cambodia
+                            </a>
+                        </li>
+
                     </ul>
-                </div>
+                </nav>
+
+                <nav data-aos="fade-up" data-aos-delay="400" data-aos-anchor-placement="top-bottom">
+                    <h3 class="text-lg font-semibold mb-4 english-text">Follow Us</h3>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-600 hover:text-accent transition-colors">
+                            <i class="fab fa-facebook-f text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-600 hover:text-accent transition-colors">
+                            <i class="fab fa-telegram text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-600 hover:text-accent transition-colors">
+                            <i class="fab fa-youtube text-xl"></i>
+                        </a>
+                    </div>
+                </nav>
             </div>
 
-            <div class="border-t border-gray-700 mt-8 pt-8 flex justify-between items-center">
-                <p class="text-gray-400 text-sm">© ២០២៥ ISTAD. រក្សាសិទ្ធិគ្រប់យ៉ាង។</p>
-                <div class="flex space-x-4">
-                    <a href="#" class="text-gray-400 hover:text-white transition-colors">
-                        <i class="fab fa-facebook-f"></i>
-                    </a>
-                    <a href="#" class="text-gray-400 hover:text-white transition-colors">
-                        <i class="fab fa-twitter"></i>
-                    </a>
-                    <a href="#" class="text-gray-400 hover:text-white transition-colors">
-                        <i class="fab fa-instagram"></i>
-                    </a>
-                    <a href="#" class="text-gray-400 hover:text-white transition-colors">
-                        <i class="fab fa-youtube"></i>
-                    </a>
-                </div>
+            <div class="border-t border-gray-300 mt-8 pt-8 text-center" data-aos="fade-in" data-aos-anchor-placement="top-bottom" data-aos-duration="1000">
+                <p class="custom-text text-sm english-text">© 2025 SportHub. All Rights Reserved.</p>
             </div>
         </div>
     </footer>
 
+    <script src="../js/event.js"></script>
+    <script src="../js/postfunction.js"></script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
-        // Add some interactive functionality
-        document.addEventListener('DOMContentLoaded', function() {
-            let favoriteEvents = [];
-            let showOnlyFavorites = false;
+        AOS.init({
+            duration: 800, // values from 0 to 3000, with step 50ms
+            once: true, // whether animation should happen only once - while scrolling down
+        });
 
-            // Modal functionality
-            const postEventBtn = document.getElementById('postEventBtn');
-            const postEventModal = document.getElementById('postEventModal');
-            const closeModal = document.getElementById('closeModal');
-            const cancelBtn = document.getElementById('cancelBtn');
-            const eventForm = document.getElementById('eventForm');
+        // ** DARK MODE TOGGLE SCRIPT **
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+        const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
 
-            // Open modal
-            postEventBtn.addEventListener('click', function() {
-                postEventModal.classList.remove('hidden');
-                document.body.style.overflow = 'hidden';
-            });
+        // Check for saved theme in localStorage and apply it
+        if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            // Show moon icon and add 'dark' class
+            themeToggleDarkIcon.classList.add('hidden');
+            themeToggleLightIcon.classList.remove('hidden');
+            document.documentElement.classList.add('dark');
+        } else {
+            // Show sun icon and remove 'dark' class
+            themeToggleLightIcon.classList.add('hidden');
+            themeToggleDarkIcon.classList.remove('hidden');
+            document.documentElement.classList.remove('dark');
+        }
 
-            // Close modal functions
-            function closeModalFunc() {
-                postEventModal.classList.add('hidden');
-                document.body.style.overflow = 'auto';
-                eventForm.reset();
-            }
+        themeToggleBtn.addEventListener('click', function() {
+            // Toggle icons
+            themeToggleDarkIcon.classList.toggle('hidden');
+            themeToggleLightIcon.classList.toggle('hidden');
 
-            closeModal.addEventListener('click', closeModalFunc);
-            cancelBtn.addEventListener('click', closeModalFunc);
-
-            // Close modal when clicking outside
-            postEventModal.addEventListener('click', function(e) {
-                if (e.target === postEventModal) {
-                    closeModalFunc();
-                }
-            });
-
-            // Handle form submission
-            eventForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-
-                // Get form data
-                const formData = {
-                    title: document.getElementById('eventTitle').value,
-                    description: document.getElementById('eventDescription').value,
-                    date: document.getElementById('eventDate').value,
-                    time: document.getElementById('eventTime').value,
-                    location: document.getElementById('eventLocation').value,
-                    category: document.getElementById('eventCategory').value,
-                    fee: document.getElementById('eventFee').value,
-                    contact: document.getElementById('eventContact').value
-                };
-
-                // Validate required fields
-                if (!formData.title || !formData.date || !formData.location) {
-                    alert('Please fill in all required fields');
-                    return;
-                }
-
-                // Here you would typically send the data to your backend
-                console.log('New event data:', formData);
-                alert('Event posted successfully!');
-                closeModalFunc();
-            });
-
-            // Favorite functionality
-            const favoriteBtn = document.getElementById('favoriteBtn');
-            const favoriteCount = document.getElementById('favoriteCount');
-
-            favoriteBtn.addEventListener('click', function() {
-                showOnlyFavorites = !showOnlyFavorites;
-
-                if (showOnlyFavorites) {
-                    favoriteBtn.classList.add('text-red-500');
-                    favoriteBtn.classList.remove('text-gray-600');
-                    showFavoriteEvents();
+            // If theme was set in localStorage, toggle it
+            if (localStorage.getItem('color-theme')) {
+                if (localStorage.getItem('color-theme') === 'light') {
+                    document.documentElement.classList.add('dark');
+                    localStorage.setItem('color-theme', 'dark');
                 } else {
-                    favoriteBtn.classList.remove('text-red-500');
-                    favoriteBtn.classList.add('text-gray-600');
-                    showAllEvents();
+                    document.documentElement.classList.remove('dark');
+                    localStorage.setItem('color-theme', 'light');
                 }
-            });
-
-            function updateFavoriteCount() {
-                const count = favoriteEvents.length;
-                if (count > 0) {
-                    favoriteCount.textContent = count;
-                    favoriteCount.classList.remove('hidden');
+                // If theme was not set in localStorage, check system preference and set it
+            } else {
+                if (document.documentElement.classList.contains('dark')) {
+                    document.documentElement.classList.remove('dark');
+                    localStorage.setItem('color-theme', 'light');
                 } else {
-                    favoriteCount.classList.add('hidden');
+                    document.documentElement.classList.add('dark');
+                    localStorage.setItem('color-theme', 'dark');
                 }
             }
-
-            function showFavoriteEvents() {
-                const eventCards = document.querySelectorAll('.card-hover');
-                eventCards.forEach((card, index) => {
-                    if (favoriteEvents.includes(index)) {
-                        card.style.display = 'block';
-                    } else {
-                        card.style.display = 'none';
-                    }
-                });
-            }
-
-            function showAllEvents() {
-                const eventCards = document.querySelectorAll('.card-hover');
-                eventCards.forEach(card => {
-                    card.style.display = 'block';
-                });
-            }
-
-            // Add click handlers for category buttons
-            const categoryButtons = document.querySelectorAll('button[class*="bg-blue-100"], button[class*="bg-gray-100"]');
-            categoryButtons.forEach(button => {
-                button.addEventListener('click', function() {
-                    // Remove active class from all buttons
-                    categoryButtons.forEach(btn => {
-                        btn.classList.remove('bg-blue-100', 'text-blue-600');
-                        btn.classList.add('bg-gray-100', 'text-gray-600');
-                    });
-
-                    // Add active class to clicked button
-                    this.classList.remove('bg-gray-100', 'text-gray-600');
-                    this.classList.add('bg-blue-100', 'text-blue-600');
-                });
-            });
-
-            // Add heart toggle functionality for individual event cards
-            const heartButtons = document.querySelectorAll('.fa-heart');
-            heartButtons.forEach((heart, index) => {
-                // Skip the main favorite button
-                if (heart.closest('#favoriteBtn')) return;
-
-                heart.addEventListener('click', function(e) {
-                    e.stopPropagation();
-
-                    const eventCard = this.closest('.card-hover');
-                    const eventIndex = Array.from(document.querySelectorAll('.card-hover')).indexOf(eventCard);
-
-                    if (favoriteEvents.includes(eventIndex)) {
-                        // Remove from favorites
-                        favoriteEvents = favoriteEvents.filter(id => id !== eventIndex);
-                        this.classList.remove('text-red-500');
-                        this.classList.add('text-gray-300');
-                    } else {
-                        // Add to favorites
-                        favoriteEvents.push(eventIndex);
-                        this.classList.add('text-red-500');
-                        this.classList.remove('text-gray-300');
-                    }
-
-                    updateFavoriteCount();
-                });
-            });
-
-            // Initialize heart buttons as not favorited
-            heartButtons.forEach(heart => {
-                if (!heart.closest('#favoriteBtn')) {
-                    heart.classList.add('text-gray-300');
-                }
-            });
         });
     </script>
 </body>
