@@ -1,7 +1,7 @@
 // Wait for the HTML document to be fully loaded before running the script
 document.addEventListener("DOMContentLoaded", () => {
     // The API endpoint URL
-    const apiUrl = "https://sport-hub.eunglyzhia.social/api/v1/sports";
+    const apiUrl = "https://cors-anywhere.herokuapp.com/https://sport-hub.eunglyzhia.social/api/v1/sports";
 
     // Get the container element from the HTML where the sport cards will be displayed
     const sportsContainer = document.getElementById("sports-container");
@@ -250,8 +250,7 @@ document.addEventListener("DOMContentLoaded", () => {
             location: sport.location || "Location not specified",
             category: sport.category ? sport.category.name : "Sports",
             image: sport.imageUrls && sport.imageUrls.length > 0 ?
-                sport.imageUrls[0] :
-                "https://placehold.co/800x400/3b82f6/ffffff?text=Event+Image",
+                sport.imageUrls[0] : "https://placehold.co/800x400/3b82f6/ffffff?text=Event+Image",
             latitude: sport.latitude || null,
             longitude: sport.longitude || null,
             locationLink: sport.locationLink || null,
